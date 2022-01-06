@@ -152,7 +152,7 @@ class SZCamperConfigurator {
 			wp_enqueue_script($js_script);
 		}
 
-		return '<div id="sz-rooct">Loading...</div>';
+		return '<div id="sz-root">Loading...</div>';
 	}
 
 }
