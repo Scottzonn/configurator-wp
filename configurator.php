@@ -5,11 +5,11 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.2
+    Version:        1.0.3
 */
 include( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
 
-class APF_CreatePage extends AdminPageFramework {
+class APF_CreatePage extends CConfigurator_AdminPageFramework {
     /**
      * The set-up method which is triggered automatically with the 'wp_loaded' hook.
      *
