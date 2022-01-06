@@ -7,7 +7,7 @@
     Author URI:     http://webcrunch.com.au
     Version:        1.0.0
 */
-include( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
+include( dirname( __FILE__ ) . '/library/apf/admin-page-framework-loader.php' );
 
 class APF_CreatePage extends AdminPageFramework {
     /**
