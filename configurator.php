@@ -5,9 +5,9 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.1
+    Version:        1.0.2
 */
-include( dirname( __FILE__ ) . '/library/apf/admin-page-framework-loader.php' );
+include( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
 
 class APF_CreatePage extends AdminPageFramework {
     /**
