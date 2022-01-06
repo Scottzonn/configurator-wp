@@ -14,7 +14,7 @@ define( 'SCRIPT_DEBUG', true );
 define( 'SAVEQUERIES', true );
 
 //load the admin interface
-include( dirname( __FILE__ ) . './SZAdminSettings.php');
+include( dirname( __FILE__ ) . 'SZAdminSettings.php');
 
 // Setting react app path constants.
 define('RP_PLUGIN_VERSION','0.1.0' );
@@ -27,7 +27,7 @@ define('RP_MANIFEST_URL', RP_REACT_APP_BUILD . 'asset-manifest.json');
  */
 function rp_load_plugin(){
 	// Loading the app
-	new SZCamperConfigurator( '#site-footer');
+	new SZCamperConfigurator();
 }
 
 add_action('init','rp_load_plugin');
@@ -38,10 +38,7 @@ add_action('init','rp_load_plugin');
  */
 class SZCamperConfigurator {
 
-	/**
-	 * @var string
-	 */
-	private $selector = '';
+
 	
 	/**
 	 * @var array
@@ -56,10 +53,9 @@ class SZCamperConfigurator {
 	/**
 	 * SZCamperConfigurator constructor.
 	 *
-	 * @param string $css_selector Css selector to render react app.
 	 */
 	function __construct( $css_selector)  {
-		$this->selector = $css_selector;
+		add_shortcode('latink_configurator', [$this, 'configurator_shortcode']);
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
 	}
 
@@ -93,7 +89,7 @@ class SZCamperConfigurator {
 		}
 
 		// Variables for app use - These variables will be available in window.rpReactPlugin variable.
-		wp_localize_script( 'react-plugin-0', 'rpReactPlugin',
+		wp_localize_script( 'react-plugin-0', 'WPLocalizedReactPlugin',
 			array( 'appSelector' => $this->selector )
 		);
 	}
@@ -122,4 +118,41 @@ class SZCamperConfigurator {
 
 		return $files_data->entrypoints;
 	}
+
+    /**
+	 * Shortcode for the configuator
+	 *
+	 *
+	 * @return string
+	 */
+	function configurator_shortcode($atts)
+	{
+        //set up [camper_configurator] shortcode
+		$atts = shortcode_atts(array(
+			'product' => 'wreath'
+		), $atts, 'camper_configurator');
+
+		
+		//must localize after script is registered
+		$localized_data = array(
+			'product' => $atts['product'],
+      		'nonce'  => wp_create_nonce( 'wpconfignonce' )
+		);
+		// Variables for app use - These variables will be available in window.szReactPlugin variable.
+		wp_localize_script(
+			'react-plugin-0',
+			'szReactPlugin',
+			$localized_data
+		);
+		
+		foreach ($this->css_scripts as $css_script) {
+			wp_enqueue_style($css_script);
+		}
+		foreach ($this->js_scripts as $js_script) {
+			wp_enqueue_script($js_script);
+		}
+
+		return '<div id="sz-rooct">Loading...</div>';
+	}
+
 }
