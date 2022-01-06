@@ -12,7 +12,7 @@ define( 'WP_DEBUG_LOG', true );
 define( 'SCRIPT_DEBUG', true );
 define( 'SAVEQUERIES', true );
 include( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
-class APF_CreatePage extends CConfigurator_AdminPageFramework {
+class APF_CreatePage extends CConfiguratorAdminPageFramework {
     /**
      * The set-up method which is triggered automatically with the 'wp_loaded' hook.
      *
