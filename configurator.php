@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.4
+    Version:        1.0.5
 */
 define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_LOG', true );
@@ -24,8 +24,8 @@ class APF_CreatePage extends CConfiguratorAdminPageFramework {
         // Add the sub menus and the pages.
         $this->addSubMenuItems(
             array(
-                'title'     => '1. My First Setting Page',  // page and menu title
-                'page_slug' => 'my_first_settings_page'     // page slug
+                'title'     => 'Camper Configurator Settings',  // page and menu title
+                'page_slug' => 'camper_config_settings'     // page slug
             )
         );
     }
@@ -35,7 +35,7 @@ class APF_CreatePage extends CConfiguratorAdminPageFramework {
      * Notice that the name of the method is 'do_' + the page slug.
      * So the slug should not contain characters which cannot be used in function names such as dots and hyphens.
      */
-    public function do_my_first_settings_page() {
+    public function do_camper_config_settings() {
         ?>
         <h3>Action Hook</h3>
         <p>This is inserted by the 'do_' + page slug method.</p>
