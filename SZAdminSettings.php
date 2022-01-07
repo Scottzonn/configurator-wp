@@ -47,7 +47,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * 
      * @remark      content_{page slug}
      */    
-    public function content_camper_config_settings( $sContent ) {      
+    public function content_camper_config_settings_tab_general( $sContent ) {      
         return $sContent 
             . '<h3>Tab Content Filter</h3>'
             . '<p>This is the first tab! This is inserted by the <b><i>\'content_ + page slug + _ + tab slug\'</i></b> method.</p>';
@@ -63,6 +63,47 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             . '<h3>Tab Content Filter</h3>'
             . '<p>This is the second tab! This is inserted by the <b><i>\'content_ + page slug + _ + tab slug\'</i></b> method.</p>';
             
+    }
+
+    /**
+     * One of the pre-defined methods which is triggered when the registered page loads.
+     *
+     * Here we add form fields.
+     * @callback        action      load_{page slug}
+     */
+    public function load_camper_config_settings_tab_emails( $oAdminPage ) {
+        $this->addSettingFields(
+            array(    // Single text field
+                'field_id'      => 'my_text_field',
+                'type'          => 'text',
+                'title'         => 'Text',
+                'description'   => 'Type something here.',
+            ),
+            array(    // Text Area
+                'field_id'      => 'my_textarea_field',
+                'type'          => 'textarea',
+                'title'         => 'Single Text Area',
+                'description'   => 'Type a text string here.',
+                'default'       => 'Hello World! This is set as the default string.',
+            ),
+            array( // Submit button
+                'field_id'      => 'submit_button',
+                'type'          => 'submit',
+            )
+        );
+    }
+    /**
+     * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
+     * @callback        action      do_{page slug}
+     */
+    public function do_my_first_forms() {
+        // Show the saved option value.
+        // The extended class name is used as the option key. This can be changed by passing a custom string to the constructor.
+        echo '<h3>Saved Fields</h3>';
+        echo '<pre>my_text_field: ' . AdminPageFramework::getOption( 'APF_AddFields', 'my_text_field', 'default text value' ) . '</pre>';
+        echo '<pre>my_textarea_field: ' . AdminPageFramework::getOption( 'APF_AddFields', 'my_textarea_field', 'default text value' ) . '</pre>';
+        echo '<h3>Show all the options as an array</h3>';
+        echo $this->oDebug->get( AdminPageFramework::getOption( 'APF_AddFields' ) );
     }
 }
 // Instantiate the class object.
