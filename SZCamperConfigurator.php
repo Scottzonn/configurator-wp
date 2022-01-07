@@ -168,7 +168,8 @@ class SZCamperConfigurator {
 		//must localize after script is registered
 		$localized_data = array(
 			'product' => $atts['product'],
-      		'nonce'  => wp_create_nonce( SZ_NONCE )
+      		'nonce'  => wp_create_nonce( SZ_NONCE ),
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
 		wp_localize_script(
