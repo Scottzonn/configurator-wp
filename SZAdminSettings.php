@@ -74,8 +74,14 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     public function load_camper_config_settings_tab_emails( $oAdminPage ) {
         $this->addSettingFields(
             array(    // Single text field
+                'field_id'      => 'self_email_recipients',
+                'type'          => 'text',
+                'title'         => 'Recipients',
+                'description'   => 'eg. admin@campers.com, sales@campers.com',
+            ),
+            array(    // rich
                 'field_id'      => 'self_email_notification',
-                'title'         => 'Email Notification',
+                'title'         => 'Email Template',
                 'type'          => 'textarea',
                 'rich'          => true,
                 'attributes'    => array(
