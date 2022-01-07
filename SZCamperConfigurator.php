@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.25
+    Version:        1.0.26
 */
 
 define( 'WP_DEBUG', true );
@@ -78,10 +78,10 @@ class SZCamperConfigurator {
 	}
 	//send email
 	function sz_sendmail($json){
-
+		
 		$to = 'scottzonneveldt@gmail.com';
 		$subject = 'A test email';
-		$message =  'Hi Scott, this is my message';
+		$message =  json_encode($json);
 		$fromName = 'Scott Zonneveldt';
 		$fromEmail = 'scottzonneveldt@gmail.com';
 		$replyTo = 'scottzonneveldt@gmail.com';
