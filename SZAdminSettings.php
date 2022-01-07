@@ -74,10 +74,15 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     public function load_camper_config_settings_tab_emails( $oAdminPage ) {
         $this->addSettingFields(
             array(    // Single text field
-                'field_id'      => 'my_text_field',
-                'type'          => 'text',
-                'title'         => 'Text',
-                'description'   => 'Type something here.',
+                'field_id'      => 'self_email_notification',
+                'title'         => 'Email Notification',
+                'type'          => 'textarea',
+                'rich'          => true,
+                'attributes'    => array(
+                    'field' => array(
+                        'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
+                    ),
+                ),
             ),
             array(    // Text Area
                 'field_id'      => 'my_textarea_field',
@@ -96,7 +101,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
      * @callback        action      do_{page slug}
      */
-    public function do_my_first_forms() {
+    public function do_camper_config_settings() {
         // Show the saved option value.
         // The extended class name is used as the option key. This can be changed by passing a custom string to the constructor.
         echo '<h3>Saved Fields</h3>';
