@@ -1,5 +1,5 @@
 <?php
-echo '<h1>working</h1>';
+
 
 include( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
 class SZAdminSettings extends CConfiguratorAdminPageFramework {
@@ -8,7 +8,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * Here we define the setup() method to set how many pages, page titles and icons etc.
      */
     public function setUp() {
-        echo '<h1>working</h1>';
+
         // Create the root menu - specifies to which parent menu to add.
         $this->setRootMenuPage( 'Settings' );
         // Add the sub menus and the pages.
@@ -18,7 +18,21 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'page_slug' => 'camper_config_settings'     // page slug
             )
         );
+
+        $this->addInPageTabs(
+            'camper_config_settings',    // set the target page slug so that the 'page_slug' key can be omitted from the next continuing in-page tab arrays.
+            array(
+                'tab_slug'  =>    'tab_general',    // avoid hyphen(dash), dots, and white spaces
+                'title'     =>    __( 'General Settings', 'sztext' ),
+            ),        
+            array(
+                'tab_slug'  =>    'tab_emails',
+                'title'     =>    __( 'Email Notifications', 'sztext' ),
+            ),                    
+        );    
     }
+    // $this->setPageHeadingTabsVisibility( false );
+
     /**
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
      *
