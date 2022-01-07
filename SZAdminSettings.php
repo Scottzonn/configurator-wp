@@ -71,6 +71,31 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * Here we add form fields.
      * @callback        action      load_{page slug}
      */
+    public function load_camper_config_settings_tab_general( $oAdminPage ) {
+        $this->addSettingFields(
+            array(    // Single text field
+                'field_id'      => 'webhook_url',
+                'type'          => 'text',
+                'title'         => 'Webhook URL',
+                'description'   => 'Customer build data will be sent here',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'https://www.integromat.com/yoururl'
+                )
+                ),
+            array( // Submit button
+                'field_id'      => 'submit_button',
+                'type'          => 'submit',
+            )
+        );
+    }
+
+    /**
+     * One of the pre-defined methods which is triggered when the registered page loads.
+     *
+     * Here we add form fields.
+     * @callback        action      load_{page slug}
+     */
     public function load_camper_config_settings_tab_emails( $oAdminPage ) {
         $this->addSettingFields(
             array(    // Single text field
@@ -79,7 +104,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'title'         => 'Recipients',
                 'description'   => 'eg. admin@campers.com, sales@campers.com',
                 'attributes'    => array(
-                    'size' => 40,
+                    'size' => 60,
                     'placeholder' => 'youremail@company.com'
                 )
             ),
@@ -93,13 +118,6 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                         'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
                     ),
                 ),
-            ),
-            array(    // Text Area
-                'field_id'      => 'my_textarea_field',
-                'type'          => 'textarea',
-                'title'         => 'Single Text Area',
-                'description'   => 'Type a text string here.',
-                'default'       => 'Hello World! This is set as the default string.',
             ),
             array( // Submit button
                 'field_id'      => 'submit_button',
