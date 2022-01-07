@@ -14,7 +14,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         // Add the sub menus and the pages.
         $this->addSubMenuItems(
             array(
-                'title'     => 'Camper Configurator Settings',  // page and menu title
+                'title'     => 'Camper Configurator',  // page and menu title
                 'page_slug' => 'camper_config_settings'     // page slug
             )
         );
@@ -73,6 +73,13 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */
     public function load_camper_config_settings_tab_general( $oAdminPage ) {
         $this->addSettingFields(
+            array(
+                'field_id'      => 'require_user_contact_details_upfront',
+                'title'         => 'Require User Details First',
+                'type'          => 'checkbox',
+                'label'         => 'Require user contact details before showing prices',
+                'default'   => false,
+            ),
             array(    // Single text field
                 'field_id'      => 'webhook_url',
                 'type'          => 'text',
@@ -82,13 +89,6 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                     'size' => 60,
                     'placeholder' => 'https://www.integromat.com/yoururl'
                 )
-            ),
-            array(
-                'field_id'      => 'require_user_contact_details_upfront',
-                'title'         => 'Require User Contact Details Upfront',
-                'type'          => 'checkbox',
-                'label'         => 'Require User Contact Details Upfront',
-                'default'   => false,
             ),
             array( // Submit button
                 'field_id'      => 'submit_button',
