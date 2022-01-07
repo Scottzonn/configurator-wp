@@ -78,6 +78,10 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'type'          => 'text',
                 'title'         => 'Recipients',
                 'description'   => 'eg. admin@campers.com, sales@campers.com',
+                'attributes'    => array(
+                    'size' => 40,
+                    'placeholder' => 'youremail@company.com'
+                )
             ),
             array(    // rich
                 'field_id'      => 'self_email_notification',
