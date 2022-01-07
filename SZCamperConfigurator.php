@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.20
+    Version:        1.0.21
 */
 
 define( 'WP_DEBUG', true );
@@ -21,6 +21,8 @@ define('RP_PLUGIN_VERSION','0.1.0' );
 define('RP_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) . '');
 define('RP_REACT_APP_BUILD', RP_PLUGIN_DIR_URL . 'build/');
 define('RP_MANIFEST_URL', RP_REACT_APP_BUILD . 'asset-manifest.json');
+
+define('SZ_NONCE', 'sznonce');
 
 /**
  * Calling the plugin class with parameters.
@@ -54,9 +56,39 @@ class SZCamperConfigurator {
 	 * SZCamperConfigurator constructor.
 	 *
 	 */
-	function __construct()  {
+	function __construct() {
+		
+		add_action( 'wp_ajax_sendemail', [$this, 'sz_sendmail'] );
+		add_action( 'wp_ajax_nopriv_sendemail', [$this, 'sz_sendmail'] );
+
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
+	}
+
+	//send email
+	function sz_sendmail($json){
+
+		$to = 'scottzonneveldt@gmail.com';
+		$subject = 'A test email';
+		$message =  'Hi Scott, this is my message';
+		$fromName = 'Scott Zonneveldt';
+		$fromEmail = 'scottzonneveldt@gmail.com';
+		$replyTo = 'scottzonneveldt@gmail.com';
+		$headers = array(
+			'Content-Type: text/html; charset=UTF-8',
+			"From: $fromName <$fromEmail>",
+			"Reply-To: $replyTo"
+		);
+
+		if(wp_mail($to, $subject, $message, $headers)) {
+			echo 'success';
+		}
+		else {
+			echo 'failed';
+		}
+
+
+		die();
 	}
 
 	/**
@@ -136,7 +168,7 @@ class SZCamperConfigurator {
 		//must localize after script is registered
 		$localized_data = array(
 			'product' => $atts['product'],
-      		'nonce'  => wp_create_nonce( 'wpconfignonce' )
+      		'nonce'  => wp_create_nonce( SZ_NONCE )
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
 		wp_localize_script(
