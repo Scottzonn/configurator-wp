@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.23
+    Version:        1.0.24
 */
 
 define( 'WP_DEBUG', true );
@@ -60,11 +60,24 @@ class SZCamperConfigurator {
 		
 		add_action( 'wp_ajax_sendemail', [$this, 'sz_sendmail'] );
 		add_action( 'wp_ajax_nopriv_sendemail', [$this, 'sz_sendmail'] );
+		add_action( 'rest_api_init', function () {
+			register_rest_route( 'camperconfigurator/v1', '/send_email', array(
+			  'methods' => 'POST',
+			  'callback' => [$this, 'route_send_email']
+			) );
+		  } );
 
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
 	}
 
+	function route_send_email(WP_REST_Request $request){
+
+		//gets parsed params
+		$json = $request->get_json_params();
+		sz_sendmail($json);
+
+	}
 	//send email
 	function sz_sendmail($json){
 
@@ -177,7 +190,7 @@ class SZCamperConfigurator {
 		$localized_data = array(
 			'product' => $atts['product'],
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'email_endpoint' => site_url() . '/camperconfigurator/v1/send_email',
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
 		wp_localize_script(
@@ -195,5 +208,8 @@ class SZCamperConfigurator {
 
 		return '<div id="sz-root">Loading...</div>';
 	}
+
+
+
 
 }
