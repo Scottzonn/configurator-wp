@@ -106,7 +106,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     public function load_camper_config_settings_tab_emails( $oAdminPage ) {
         $this->addSettingFields(
             array(    // Single text field
-                'field_id'      => 'self_email_recipients',
+                'field_id'      => 'self_email_to',
                 'type'          => 'text',
                 'title'         => 'Recipients',
                 'description'   => 'eg. admin@campers.com, sales@campers.com',
@@ -115,8 +115,49 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                     'placeholder' => 'youremail@company.com'
                 )
             ),
+            array(    // Single text field
+                'field_id'      => 'self_email_from_name',
+                'type'          => 'text',
+                'title'         => 'From Name',
+                'description'   => 'eg. My Dealership',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'youremail@company.com'
+                )
+            ),
+
+            array(    // Single text field
+                'field_id'      => 'self_email_from_email',
+                'type'          => 'text',
+                'title'         => 'From Email',
+                'description'   => 'eg. sales@campers.com',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'sales@campers.com'
+                )
+            ),
+            array(    // Single text field
+                'field_id'      => 'self_email_reply_to',
+                'type'          => 'text',
+                'title'         => 'Reply To',
+                'description'   => 'eg. sales@campers.com',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'sales@campers.com'
+                )
+            ),
+            array(    // Single text field
+                'field_id'      => 'self_email_subject',
+                'type'          => 'text',
+                'title'         => 'Subject',
+                'description'   => 'eg. Alert: Customer Camper Submitted',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'Your Subject'
+                )
+            ),
             array(    // rich
-                'field_id'      => 'self_email_notification',
+                'field_id'      => 'self_email_template',
                 'title'         => 'Email Template',
                 'type'          => 'textarea',
                 'rich'          => true,

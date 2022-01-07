@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.26
+    Version:        1.0.29
 */
 
 define( 'WP_DEBUG', true );
@@ -77,21 +77,24 @@ class SZCamperConfigurator {
 
 	}
 	//send email
-	function sz_sendmail($json){
+	function sz_sendmail($buildJson){
 		
-		$to = 'scottzonneveldt@gmail.com';
-		$subject = 'A test email';
-		$message =  json_encode($json);
-		$fromName = 'Scott Zonneveldt';
-		$fromEmail = 'scottzonneveldt@gmail.com';
-		$replyTo = 'scottzonneveldt@gmail.com';
+		$message =  json_encode($buildJson);
+		
+		$emailTo	 	= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_to', '' );
+		$fromName 		= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_from_name', 'Camper Configurator' );
+		$fromEmail 		= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_from_email', 'Camper Configurator' );
+		$emailReplyTo 	= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_reply_to', $fromEmail );
+		$emailTemplate 	= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_template', '' );
+		$emailSubject 	= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_subject', 'New Camper Submitted' );
+		
 		$headers = array(
 			'Content-Type: text/html; charset=UTF-8',
 			"From: $fromName <$fromEmail>",
 			"Reply-To: $replyTo"
 		);
 
-		if(wp_mail($to, $subject, $message, $headers)) {
+		if(wp_mail($emailTo, replaceDynamicTags($buildJson, $emailSubject), replaceDynamicTags($buildJson, $emailTemplate), $headers)) {
 			$response = [
 				message => 'this worked',
 				success => true,
@@ -110,6 +113,52 @@ class SZCamperConfigurator {
 		die();
 	}
 
+	function replaceDynamicTags($buildJson, $string){
+
+		$accessories = '';
+		foreach($buildJson->accessories as $accessory){
+			$accessories += '<li>'. $accessory->name . ' - ' . $accessory->rrp . '</li>';
+		}
+		$accessories = '<ul>' . $accessories . '</ul>';
+
+		$replacements = array(
+			'[first name]' 		=>  $buildJson->customer->firstName,
+			'[surname]' => 			$buildJson->customer->surname,
+			'[full name]' => 		$buildJson->customer->firstName . ' ' . $buildJson->customer->surname,
+			'[email]' => 			$buildJson->customer->email,
+			'[postcode]' => 		$buildJson->customer->postcode,
+			'[phone]' => 			$buildJson->customer->phone,
+			'[address line 1]' => 	$buildJson->customer->address->{'address-line-1'},
+			'[address line 2]' => 	$buildJson->customer->address->{'address-line-2'},
+			'[city]' => 			$buildJson->customer->address->city,
+			'[country]' => 			$buildJson->customer->address->country,
+			'[state]' => 			$buildJson->customer->address->state,
+			'[product name]' => 	$buildJson->product->name,
+			'[rrp]' => 				$buildJson->model->rrp,
+			'[image url]' => 		$buildJson->model->featured_image->url,
+			'[accessories list]' =>	$accessories
+		);
+
+		foreach($replacements as $placeholder => $literal){
+			$string = str_replace($placeholder, $literal, $string);
+		}
+
+		return $string;
+
+	}
+
+
+	function getEmailTemplate(){
+		// The extended class name is used as the option key. This can be changed by passing a custom string to the constructor.
+		// echo '<h3>Saved Fields</h3>';
+		// echo '<pre>my_text_field: ' . CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_recipients', 'no template filled in' ) . '</pre>';
+		// echo '<pre>my_textarea_field: ' . CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'my_textarea_field', 'default text value' ) . '</pre>';
+		// echo '<h3>Show all the options as an array</h3>';
+		// echo $this->oDebug->get( CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings' ) );
+
+
+		
+	}
 	/**
 	 * Load react app files in WordPress admin.
 	 *
