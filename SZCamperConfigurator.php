@@ -81,10 +81,18 @@ class SZCamperConfigurator {
 		);
 
 		if(wp_mail($to, $subject, $message, $headers)) {
-			echo 'success';
-		}
-		else {
-			echo 'failed';
+			$response = [
+				message => 'this worked',
+				success => true,
+			];
+			echo json_encode($response);
+
+		} else {
+			$response = [
+				message => 'failed',
+				success => false,
+			];
+			echo json_encode($response);
 		}
 
 
