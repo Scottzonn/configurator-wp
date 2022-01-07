@@ -39,11 +39,30 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * Notice that the name of the method is 'do_' + the page slug.
      * So the slug should not contain characters which cannot be used in function names such as dots and hyphens.
      */
-    public function do_camper_config_settings() {
-        ?>
-        <h3>Action Hook</h3>
-        <p>This is inserted by the 'do_' + page slug method.</p>
-        <?php
+    // public function do_camper_config_settings() {
+
+    // }
+        /**
+     * One of the predefined callback method.
+     * 
+     * @remark      content_{page slug}
+     */    
+    public function content_camper_config_settings( $sContent ) {      
+        return $sContent 
+            . '<h3>Tab Content Filter</h3>'
+            . '<p>This is the first tab! This is inserted by the <b><i>\'content_ + page slug + _ + tab slug\'</i></b> method.</p>';
+            
+    }
+        /**
+     * One of the predefined callback method.
+     * 
+     * @remark      content_{page slug}_{tab slug}
+     */    
+    public function content_camper_config_settings_tab_emails( $sContent ) {      
+        return $sContent 
+            . '<h3>Tab Content Filter</h3>'
+            . '<p>This is the second tab! This is inserted by the <b><i>\'content_ + page slug + _ + tab slug\'</i></b> method.</p>';
+            
     }
 }
 // Instantiate the class object.
