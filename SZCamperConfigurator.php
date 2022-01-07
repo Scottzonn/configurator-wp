@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.29
+    Version:        1.0.30
 */
 
 define( 'WP_DEBUG', true );
@@ -94,7 +94,7 @@ class SZCamperConfigurator {
 			"Reply-To: $replyTo"
 		);
 
-		if(wp_mail($emailTo, replaceDynamicTags($buildJson, $emailSubject), replaceDynamicTags($buildJson, $emailTemplate), $headers)) {
+		if(wp_mail($emailTo, $this->replaceDynamicTags($buildJson, $emailSubject), $this->replaceDynamicTags($buildJson, $emailTemplate), $headers)) {
 			$response = [
 				message => 'this worked',
 				success => true,
@@ -146,7 +146,6 @@ class SZCamperConfigurator {
 		return $string;
 
 	}
-
 
 	function getEmailTemplate(){
 		// The extended class name is used as the option key. This can be changed by passing a custom string to the constructor.
