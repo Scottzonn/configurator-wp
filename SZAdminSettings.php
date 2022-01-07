@@ -8,6 +8,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * Here we define the setup() method to set how many pages, page titles and icons etc.
      */
     public function setUp() {
+        echo '<h1>working</h1>';
         // Create the root menu - specifies to which parent menu to add.
         $this->setRootMenuPage( 'Settings' );
         // Add the sub menus and the pages.
