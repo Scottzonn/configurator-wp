@@ -94,7 +94,7 @@ class SZCamperConfigurator {
 			"Reply-To: $replyTo"
 		);
 
-		if(wp_mail($emailTo, $this->replaceDynamicTags($buildJson, $emailSubject), $this->replaceDynamicTags($buildJson, $emailTemplate), $headers)) {
+		if(wp_mail($emailTo, $this->replaceDynamicTags($buildJson, $emailSubject), $this->replaceDynamicTags($buildJson, $emailTemplate) . '<br> ' .$message, $headers)) {
 			$response = [
 				message => 'this worked',
 				success => true,
