@@ -82,7 +82,14 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                     'size' => 60,
                     'placeholder' => 'https://www.integromat.com/yoururl'
                 )
-                ),
+            ),
+            array(
+                'field_id'      => 'require_user_contact_details_upfront',
+                'title'         => 'Require User Contact Details Upfront',
+                'type'          => 'checkbox',
+                'label'         => 'Require User Contact Details Upfront',
+                'default'   => false,
+            ),
             array( // Submit button
                 'field_id'      => 'submit_button',
                 'type'          => 'submit',

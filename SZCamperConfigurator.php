@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.18
+    Version:        1.0.19
 */
 
 define( 'WP_DEBUG', true );
