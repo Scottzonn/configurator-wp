@@ -1,4 +1,5 @@
 <?php
+echo '<h1>working</h1>';
 
 include( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
 class SZAdminSettings extends CConfiguratorAdminPageFramework {
