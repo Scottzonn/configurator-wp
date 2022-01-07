@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.8
+    Version:        1.0.9
 */
 
 define( 'WP_DEBUG', true );
@@ -18,7 +18,7 @@ include( dirname( __FILE__ ) . 'SZAdminSettings.php');
 
 // Setting react app path constants.
 define('RP_PLUGIN_VERSION','0.1.0' );
-define('RP_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) . 'react-app/');
+define('RP_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) . '');
 define('RP_REACT_APP_BUILD', RP_PLUGIN_DIR_URL . 'build/');
 define('RP_MANIFEST_URL', RP_REACT_APP_BUILD . 'asset-manifest.json');
 
