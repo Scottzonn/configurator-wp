@@ -190,7 +190,7 @@ class SZCamperConfigurator {
 		$localized_data = array(
 			'product' => $atts['product'],
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
-			'email_endpoint' => site_url() . '/camperconfigurator/v1/send_email',
+			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
 		wp_localize_script(
