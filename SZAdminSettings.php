@@ -101,15 +101,15 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
      * @callback        action      do_{page slug}
      */
-    public function do_camper_config_settings() {
-        // Show the saved option value.
-        // The extended class name is used as the option key. This can be changed by passing a custom string to the constructor.
-        echo '<h3>Saved Fields</h3>';
-        echo '<pre>my_text_field: ' . AdminPageFramework::getOption( 'APF_AddFields', 'my_text_field', 'default text value' ) . '</pre>';
-        echo '<pre>my_textarea_field: ' . AdminPageFramework::getOption( 'APF_AddFields', 'my_textarea_field', 'default text value' ) . '</pre>';
-        echo '<h3>Show all the options as an array</h3>';
-        echo $this->oDebug->get( AdminPageFramework::getOption( 'APF_AddFields' ) );
-    }
+    // public function do_camper_config_settings() {
+    //     // Show the saved option value.
+    //     // The extended class name is used as the option key. This can be changed by passing a custom string to the constructor.
+    //     echo '<h3>Saved Fields</h3>';
+    //     echo '<pre>my_text_field: ' . AdminPageFramework::getOption( 'APF_AddFields', 'my_text_field', 'default text value' ) . '</pre>';
+    //     echo '<pre>my_textarea_field: ' . AdminPageFramework::getOption( 'APF_AddFields', 'my_textarea_field', 'default text value' ) . '</pre>';
+    //     echo '<h3>Show all the options as an array</h3>';
+    //     echo $this->oDebug->get( AdminPageFramework::getOption( 'APF_AddFields' ) );
+    // }
 }
 // Instantiate the class object.
 new SZAdminSettings;
