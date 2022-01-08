@@ -10,7 +10,7 @@ class SZEmailNotifications{
     //prefix = self/customer/dealer
 	public function sz_sendmail(array $buildJson, string $prefix='self'){
 		
-		$userEmailFields = $this->getSettingsFields($prefix);
+		$userEmailFields = $this->getEmailFields($prefix);
 		$userEmailFields = $this->parseAllTags($buildJson, $userEmailFields);
 		
 		$headers = array(
