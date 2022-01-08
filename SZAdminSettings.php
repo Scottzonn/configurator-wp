@@ -41,16 +41,32 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         );    
     }
 
-        /**
+    /**
      * One of the predefined callback method.
      * 
      * @remark      content_{page slug}
      */    
     public function content_camper_config_settings_tab_self_emails( $sContent ) {      
-
         $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
         return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes;
-            
+    }
+    /**
+     * One of the predefined callback method.
+     * 
+     * @remark      content_{page slug}
+     */    
+    public function content_camper_config_settings_tab_customer_emails( $sContent ) {      
+        $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
+        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes;
+    }
+    /**
+     * One of the predefined callback method.
+     * 
+     * @remark      content_{page slug}
+     */    
+    public function content_camper_config_settings_tab_dealer_emails( $sContent ) {      
+        $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
+        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes;
     }
 
     /**

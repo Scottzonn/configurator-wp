@@ -60,7 +60,7 @@ class SZCamperConfigurator {
 	 *
 	 */
 	function __construct() {
-		$this->admin_settings = new SZAdminSettings;
+		$this->admin_settings = new SZAdminSettings();
 		$this->email_notifications = new SZEmailNotifications();
 		add_action( 'rest_api_init', function () {
 			register_rest_route( 'camperconfigurator/v1', '/send_email', array(
@@ -83,9 +83,8 @@ class SZCamperConfigurator {
 	public function route_send_email(WP_REST_Request $request){
 		//gets parsed params
 		$json = $request->get_json_params();
-		// echo print_r($this, true);
-		// echo print_r($this->email_notifications, true);
-		$this->email_notifications->sz_sendmail($json, 'self');
+		$this->email_notifications->sendMail($json, 'self');
+		$this->email_notifications->sendMail($json, 'customer');
 	}
 
 	/**
