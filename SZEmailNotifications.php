@@ -8,6 +8,9 @@ class SZEmailNotifications{
 	public function sendMail(array $buildJson, string $prefix='self'){
 		
 		$userEmailFields = $this->getEmailFields($prefix);
+        if( $prefix==='customer'){
+            $userEmailFields['emailTo'] = $buildJson['email'];
+        }
 		$userEmailFields = $this->parseAllTags($buildJson, $userEmailFields);
 		
 		$headers = array(
@@ -54,6 +57,7 @@ class SZEmailNotifications{
 			emailTemplate => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_template", '' ),
 			emailSubject => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_subject", 'New Camper Submitted' ),
 		];
+
 		return $fields;
     }
 
