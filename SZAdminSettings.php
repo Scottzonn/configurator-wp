@@ -40,17 +40,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             
         );    
     }
-    // $this->setPageHeadingTabsVisibility( false );
 
-    /**
-     * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
-     *
-     * Notice that the name of the method is 'do_' + the page slug.
-     * So the slug should not contain characters which cannot be used in function names such as dots and hyphens.
-     */
-    // public function do_camper_config_settings() {
-
-    // }
         /**
      * One of the predefined callback method.
      * 
@@ -60,17 +50,6 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         return $sContent 
             . '<h3>Tab Content Filter</h3>'
             . '<p>This is the first tab! This is inserted by the <b><i>\'content_ + page slug + _ + tab slug\'</i></b> method.</p>';
-            
-    }
-        /**
-     * One of the predefined callback method.
-     * 
-     * @remark      content_{page slug}_{tab slug}
-     */    
-    public function content_camper_config_settings_tab_self_emails( $sContent ) {      
-        return $sContent 
-            . '<h3>Tab Content Filter</h3>'
-            . '<p>This is the second tab! This is inserted by the <b><i>\'content_ + page slug + _ + tab slug\'</i></b> method.</p>';
             
     }
 
@@ -92,8 +71,8 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             array(    // Single text field
                 'field_id'      => 'webhook_url',
                 'type'          => 'text',
-                'title'         => 'Webhook URL',
-                'description'   => 'Customer build data will be sent here',
+                'title'         => 'Webhook URL (Optional)',
+                'description'   => 'Customer build data will be sent',
                 'attributes'    => array(
                     'size' => 60,
                     'placeholder' => 'https://www.integromat.com/yoururl'
