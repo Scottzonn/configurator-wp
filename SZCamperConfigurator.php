@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.34
+    Version:        1.0.35
 */
 
 define( 'WP_DEBUG', true );
@@ -116,30 +116,30 @@ class SZCamperConfigurator {
 	function replaceDynamicTags($buildJson, $string){
 
 		$accessories = '';
-		foreach($buildJson->accessories as $accessory){
-			$accessories .= '<li>'. $accessory->name . ' - ' . $accessory->rrp . '</li>';
+		foreach($buildJson["accessories"] as $accessory){
+			$accessories .= '<li>'. $accessory["name"] . ' - ' . $accessory["rrp"] . '</li>';
 		}
 		$accessories = '<ul>' . $accessories . '</ul>';
 
 		$replacements = array(
-			'[first name]' 		=>  $buildJson->customer->firstName,
-			'[surname]' => 			$buildJson->customer->surname,
-			'[full name]' => 		$buildJson->customer->firstName . ' ' . $buildJson->customer->surname,
-			'[email]' => 			$buildJson->customer->email,
-			'[postcode]' => 		$buildJson->customer->postcode,
-			'[phone]' => 			$buildJson->customer->phone,
-			'[address line 1]' => 	$buildJson->customer->address->{'address-line-1'},
-			'[address line 2]' => 	$buildJson->customer->address->{'address-line-2'},
-			'[city]' => 			$buildJson->customer->address->city,
-			'[country]' => 			$buildJson->customer->address->country,
-			'[state]' => 			$buildJson->customer->address->state,
-			'[product name]' => 	$buildJson->product->name,
-			'[rrp]' => 				$buildJson->model->rrp.'',
-			'[image url]' => 		$buildJson->model->featured_image->url,
+			'[first name]' 		=>  $buildJson["customer"]["firstName"],
+			'[surname]' => 			$buildJson["customer"]["surname"],
+			'[full name]' => 		$buildJson["customer"]["firstName"] . ' ' . $buildJson["customer"]["surname"],
+			'[email]' => 			$buildJson["customer"]["email"],
+			'[postcode]' => 		$buildJson["customer"]["postcode"],
+			'[phone]' => 			$buildJson["customer"]["phone"],
+			'[address line 1]' => 	$buildJson["customer"]["address"]["address-line-1"],
+			'[address line 2]' => 	$buildJson["customer"]["address"]["address-line-2"],
+			'[city]' => 			$buildJson["customer"]["address"]["city"],
+			'[country]' => 			$buildJson["customer"]["address"]["country"],
+			'[state]' => 			$buildJson["customer"]["address"]["state"],
+			'[product name]' => 	$buildJson["product"]["name"],
+			'[rrp]' => 				$buildJson["model"]["rrp"] . '',
+			'[image url]' => 		$buildJson["model"]["featured_image"]["url"],
 			'[accessories list]' =>	$accessories
 		);
 		echo 'here2 ' . print_r($buildJson, true);
-		
+
 		$newStr = $string;
 		foreach($replacements as $placeholder => $literal){
 			$newStr = str_replace($placeholder, $literal, $newStr);
