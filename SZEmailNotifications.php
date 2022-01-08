@@ -12,7 +12,7 @@ class SZEmailNotifications{
             $userEmailFields["emailTo"] = $buildJson["customer"]["email"];
         }
 		$userEmailFields = $this->parseAllTags($buildJson, $userEmailFields);
-		echo 'emailto:' . $userEmailFields["emailTo"];
+		echo print_r($userEmailFields, true);
 		$headers = array(
 			'Content-Type: text/html; charset=UTF-8',
 			"From: {$userEmailFields['fromName']} <{$userEmailFields['fromEmail']}>",
