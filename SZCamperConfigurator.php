@@ -84,7 +84,7 @@ class SZCamperConfigurator {
 
 		//gets parsed params
 		$json = $request->get_json_params();
-		$this->sz_sendmail($json, 'self');
+		$this->email_notifications->sz_sendmail($json, 'self');
 
 	}
 
