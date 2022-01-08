@@ -35,25 +35,25 @@ class SZEmailNotifications{
 
     private function getEmailFields(string $prefix){
 
-        $getSettings = fn($fieldId, $default='') => CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_to", $default ); 
-
-        $fields = [
-			emailTo => 			$getSettings('_email_to'),
-			fromName => 		$getSettings('_email_from_name', 'Camper Configurator' ),
-			fromEmail => 		$getSettings('_email_from_email', 'Camper Configurator' ),
-			emailReplyTo => 	$getSettings('_email_reply_to', 'Camper Configurator' ),
-			emailTemplate => 	$getSettings('_email_template'),
-			emailSubject => 	$getSettings('_email_subject', 'New Camper Submitted' ),
-		];
+        // $getSettings = fn($fieldId, $default='') => CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_to", $default ); 
 
         // $fields = [
-		// 	emailTo => 			CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_to", '' ),
-		// 	fromName => 		CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_from_name", 'Camper Configurator' ),
-		// 	fromEmail => 		CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_from_email", 'Camper Configurator' ),
-		// 	emailReplyTo => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_reply_to", 'Camper Configurator' ),
-		// 	emailTemplate => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_template", '' ),
-		// 	emailSubject => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_subject", 'New Camper Submitted' ),
+		// 	emailTo => 			$getSettings('_email_to'),
+		// 	fromName => 		$getSettings('_email_from_name', 'Camper Configurator' ),
+		// 	fromEmail => 		$getSettings('_email_from_email', 'Camper Configurator' ),
+		// 	emailReplyTo => 	$getSettings('_email_reply_to', 'Camper Configurator' ),
+		// 	emailTemplate => 	$getSettings('_email_template'),
+		// 	emailSubject => 	$getSettings('_email_subject', 'New Camper Submitted' ),
 		// ];
+
+        $fields = [
+			emailTo => 			CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_to", '' ),
+			fromName => 		CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_from_name", 'Camper Configurator' ),
+			fromEmail => 		CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_from_email", 'Camper Configurator' ),
+			emailReplyTo => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_reply_to", 'Camper Configurator' ),
+			emailTemplate => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_template", '' ),
+			emailSubject => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_subject", 'New Camper Submitted' ),
+		];
 		return $fields;
     }
 
