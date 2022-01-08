@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.37
+    Version:        1.0.38
 */
 
 define( 'WP_DEBUG', true );
@@ -15,12 +15,14 @@ define( 'SAVEQUERIES', true );
 
 //load the admin interface
 include( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
+include( plugin_dir_path( __FILE__ ) . 'SZEmailNotifications.php');
 
 // Setting react app path constants.
 define('RP_PLUGIN_VERSION','0.1.0' );
 define('RP_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) . '');
 define('RP_REACT_APP_BUILD', RP_PLUGIN_DIR_URL . 'build/');
 define('RP_MANIFEST_URL', RP_REACT_APP_BUILD . 'asset-manifest.json');
+
 
 define('SZ_NONCE', 'sznonce');
 
@@ -40,10 +42,9 @@ add_action('init','rp_load_plugin');
  */
 class SZCamperConfigurator {
 
+	private $admin_settings;
+	private $email_notifications;
 
-	// Instantiate the class object.
-	private $Admin;
-// That's it!! See, it's very short and easy, huh?
 	/**
 	 * @var array
 	 */
@@ -59,8 +60,8 @@ class SZCamperConfigurator {
 	 *
 	 */
 	function __construct() {
-		$Admin = new SZAdminSettings;
-		
+		$admin_settings = new SZAdminSettings;
+		$email_notifications = new SZEmailNotifications;
 		add_action( 'rest_api_init', function () {
 			register_rest_route( 'camperconfigurator/v1', '/send_email', array(
 			  'methods' => 'POST',
@@ -83,93 +84,10 @@ class SZCamperConfigurator {
 
 		//gets parsed params
 		$json = $request->get_json_params();
-		$this->sz_sendmail($json);
-
-	}
-	//send email
-	function sz_sendmail($buildJson){
-		
-		$message =  json_encode($buildJson);
-		
-		$emailTo	 	= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_to', '' );
-		$fromName 		= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_from_name', 'Camper Configurator' );
-		$fromEmail 		= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_from_email', 'Camper Configurator' );
-		$emailReplyTo 	= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_reply_to', $fromEmail );
-		$emailTemplate 	= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_template', '' );
-		$emailSubject 	= CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_subject', 'New Camper Submitted' );
-		
-		$headers = array(
-			'Content-Type: text/html; charset=UTF-8',
-			"From: $fromName <$fromEmail>",
-			"Reply-To: $replyTo"
-		);
-
-		if(wp_mail($emailTo, $this->replaceDynamicTags($buildJson, $emailSubject), $this->replaceDynamicTags($buildJson, $emailTemplate) . '<br>' . $message, $headers)) {
-			$response = [
-				message => 'this worked',
-				success => true,
-			];
-			echo json_encode($response);
-
-		} else {
-			$response = [
-				message => 'failed',
-				success => false,
-			];
-			echo json_encode($response);
-		}
-
-
-		die();
-	}
-
-	function replaceDynamicTags($buildJson, $string){
-
-		$accessories = '';
-		foreach($buildJson["accessories"] as $accessory){
-			$accessories .= '<li>'. $accessory["name"] . ' - ' . $accessory["rrp"] . '</li>';
-		}
-		$accessories = '<ul>' . $accessories . '</ul>';
-
-		$replacements = array(
-			'[first name]' 		=>  $buildJson["customer"]["firstName"],
-			'[surname]' => 			$buildJson["customer"]["surname"],
-			'[full name]' => 		$buildJson["customer"]["firstName"] . ' ' . $buildJson["customer"]["surname"],
-			'[email]' => 			$buildJson["customer"]["email"],
-			'[postcode]' => 		$buildJson["customer"]["postcode"],
-			'[phone]' => 			$buildJson["customer"]["phone"],
-			'[address line 1]' => 	$buildJson["customer"]["address"]["address-line-1"],
-			'[address line 2]' => 	$buildJson["customer"]["address"]["address-line-2"],
-			'[city]' => 			$buildJson["customer"]["address"]["city"],
-			'[country]' => 			$buildJson["customer"]["address"]["country"],
-			'[state]' => 			$buildJson["customer"]["address"]["state"],
-			'[product name]' => 	$buildJson["product"]["name"],
-			'[rrp]' => 				$buildJson["model"]["rrp"] . '',
-			'[image url]' => 		$buildJson["model"]["featured_image"]["url"],
-			'[accessories list]' =>	$accessories
-		);
-		echo 'here2 ' . print_r($buildJson, true);
-
-		$newStr = $string;
-		foreach($replacements as $placeholder => $literal){
-			$newStr = str_replace($placeholder, $literal, $newStr);
-		}
-
-		return $newStr;
+		$this->sz_sendmail($json, 'self');
 
 	}
 
-	function getEmailTemplate(){
-		// The extended class name is used as the option key. This can be changed by passing a custom string to the constructor.
-		// echo '<h3>Saved Fields</h3>';
-		// echo '<pre>my_text_field: ' . CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'self_email_recipients', 'no template filled in' ) . '</pre>';
-		// echo '<pre>my_textarea_field: ' . CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'my_textarea_field', 'default text value' ) . '</pre>';
-		// echo '<h3>Show all the options as an array</h3>';
-		// echo $this->oDebug->get( CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings' ) );
-
-
-		
-	}
 	/**
 	 * Load react app files in WordPress admin.
 	 *

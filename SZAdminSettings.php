@@ -85,6 +85,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         );
     }
 
+
     /**
      * One of the pre-defined methods which is triggered when the registered page loads.
      *
@@ -156,7 +157,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 ),
             ),
             array( // Submit button
-                'field_id'      => 'submit_button',
+                'field_id'      => 'self_submit_button',
                 'type'          => 'submit',
             )
         );
