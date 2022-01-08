@@ -14,8 +14,8 @@ define( 'SCRIPT_DEBUG', true );
 define( 'SAVEQUERIES', true );
 
 //load the admin interface
-include( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
-include( plugin_dir_path( __FILE__ ) . 'SZEmailNotifications.php');
+include_once( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
+include_once( plugin_dir_path( __FILE__ ) . 'SZEmailNotifications.php');
 
 // Setting react app path constants.
 define('RP_PLUGIN_VERSION','0.1.0' );

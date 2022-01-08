@@ -1,5 +1,5 @@
 <?php 
-include( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
+include_once( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
 
 class SZEmailNotifications{
 

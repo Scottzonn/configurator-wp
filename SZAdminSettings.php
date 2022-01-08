@@ -1,7 +1,7 @@
 <?php
 
 
-include( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
+include_once( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
 class SZAdminSettings extends CConfiguratorAdminPageFramework {
     /**
      * The set-up method which is triggered automatically with the 'wp_loaded' hook.
