@@ -117,7 +117,7 @@ class SZCamperConfigurator {
 
 		$accessories = '';
 		foreach($buildJson->accessories as $accessory){
-			$accessories += '<li>'. $accessory->name . ' - ' . $accessory->rrp . '</li>';
+			$accessories .= '<li>'. $accessory->name . ' - ' . $accessory->rrp . '</li>';
 		}
 		$accessories = '<ul>' . $accessories . '</ul>';
 
@@ -166,7 +166,7 @@ class SZCamperConfigurator {
 	 * @return bool|void
 	 */
 	function load_react_app( $hook ) {
-		echo '<h2>load_react_app scripts</h2>';
+
 		// Get assets links.
 		$assets_files = $this->get_assets_files();
 
@@ -176,14 +176,12 @@ class SZCamperConfigurator {
 		// Register css files. Load them later when required (in shortcode)
 		foreach ( $css_files as $index => $css_file ) {
 			wp_register_style('react-plugin-' . $index, RP_REACT_APP_BUILD . $css_file);
-			echo 'registering ' . RP_REACT_APP_BUILD . $css_file;
 			array_push($this->css_scripts, 'react-plugin-' . $index);
 		}
 
 		// Register js files. Load them later when required (in shortcode)
 		foreach ( $js_files as $index => $js_file ) {
 			wp_register_script('react-plugin-' . $index, RP_REACT_APP_BUILD . $js_file, array(), RP_PLUGIN_VERSION, true);
-			echo 'registering ' . RP_REACT_APP_BUILD . $js_file;
 			array_push($this->js_scripts, 'react-plugin-' . $index);
 		}
 
