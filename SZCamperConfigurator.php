@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.33
+    Version:        1.0.34
 */
 
 define( 'WP_DEBUG', true );
@@ -138,7 +138,7 @@ class SZCamperConfigurator {
 			'[image url]' => 		$buildJson->model->featured_image->url,
 			'[accessories list]' =>	$accessories
 		);
-		echo 'here ' . $buildJson->customer .' ' . $buildJson->customer->firstName;
+		echo 'here ' . $buildJson .' ' . $buildJson->customer->firstName;
 		$newStr = $string;
 		foreach($replacements as $placeholder => $literal){
 			$newStr = str_replace($placeholder, $literal, $newStr);
