@@ -57,7 +57,7 @@ class SZCamperConfigurator {
 	 *
 	 */
 	function __construct() {
-		echo '<h2>enquue scripts</h2>';
+
 		add_action( 'rest_api_init', function () {
 			register_rest_route( 'camperconfigurator/v1', '/send_email', array(
 			  'methods' => 'POST',
@@ -66,7 +66,6 @@ class SZCamperConfigurator {
 		  } );
 
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
-		echo '<h2>enquue scripts</h2>';
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
 	}
 
@@ -167,7 +166,7 @@ class SZCamperConfigurator {
 	 * @return bool|void
 	 */
 	function load_react_app( $hook ) {
-
+		echo '<h2>load_react_app scripts</h2>';
 		// Get assets links.
 		$assets_files = $this->get_assets_files();
 
