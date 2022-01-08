@@ -262,7 +262,16 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */
     public function load_camper_config_settings_tab_dealer_emails( $oAdminPage ) {
         $this->addSettingFields(
-
+            array(    // Single text field
+                'field_id'      => 'dealer_email_to',
+                'type'          => 'text',
+                'title'         => 'Recipients',
+                'description'   => 'eg. admin@campers.com, sales@campers.com',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'youremail@company.com'
+                )
+            ),
             array(    // Single text field
                 'field_id'      => 'dealer_email_from_name',
                 'type'          => 'text',
