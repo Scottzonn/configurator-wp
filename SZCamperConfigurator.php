@@ -66,6 +66,7 @@ class SZCamperConfigurator {
 		  } );
 
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
+		echo '<h2>enquue scripts</h2>';
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
 	}
 
