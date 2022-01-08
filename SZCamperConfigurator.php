@@ -65,8 +65,8 @@ class SZCamperConfigurator {
 			) );
 		  } );
 
-		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
+		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
 	}
 
 	function route_send_email(WP_REST_Request $request){
