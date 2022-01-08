@@ -47,9 +47,9 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * @remark      content_{page slug}
      */    
     public function content_camper_config_settings_tab_general( $sContent ) {      
-        return $sContent 
-            . '<h3>Tab Content Filter</h3>'
-            . '<p>This is the first tab! This is inserted by the <b><i>\'content_ + page slug + _ + tab slug\'</i></b> method.</p>';
+
+        $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
+        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes;
             
     }
 
