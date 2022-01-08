@@ -9,7 +9,7 @@ class SZEmailNotifications{
 		
 		$userEmailFields = $this->getEmailFields($prefix);
         if( $prefix==='customer'){
-            $userEmailFields['emailTo'] = $buildJson['email'];
+            $userEmailFields["emailTo"] = $buildJson["customer"]["email"];
         }
 		$userEmailFields = $this->parseAllTags($buildJson, $userEmailFields);
 		
