@@ -26,9 +26,13 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'title'     =>    __( 'General Settings', 'sztext' ),
             ),        
             array(
-                'tab_slug'  =>    'tab_emails',
+                'tab_slug'  =>    'tab_self_emails',
                 'title'     =>    __( 'Email Notifications', 'sztext' ),
-            ),                    
+            ),
+            array(
+                'tab_slug'  =>    'tab_customer_emails',
+                'title'     =>    __( 'Customer Email Notification', 'sztext' ),
+            ),                 
         );    
     }
     // $this->setPageHeadingTabsVisibility( false );
@@ -58,7 +62,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * 
      * @remark      content_{page slug}_{tab slug}
      */    
-    public function content_camper_config_settings_tab_emails( $sContent ) {      
+    public function content_camper_config_settings_tab_self_emails( $sContent ) {      
         return $sContent 
             . '<h3>Tab Content Filter</h3>'
             . '<p>This is the second tab! This is inserted by the <b><i>\'content_ + page slug + _ + tab slug\'</i></b> method.</p>';
@@ -103,7 +107,85 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * Here we add form fields.
      * @callback        action      load_{page slug}
      */
-    public function load_camper_config_settings_tab_emails( $oAdminPage ) {
+    public function load_camper_config_settings_tab_self_emails( $oAdminPage ) {
+        $this->addSettingFields(
+            array(    // Single text field
+                'field_id'      => 'self_email_to',
+                'type'          => 'text',
+                'title'         => 'Recipients',
+                'description'   => 'eg. admin@campers.com, sales@campers.com',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'youremail@company.com'
+                )
+            ),
+            array(    // Single text field
+                'field_id'      => 'self_email_from_name',
+                'type'          => 'text',
+                'title'         => 'From Name',
+                'description'   => 'eg. My Dealership',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'youremail@company.com'
+                )
+            ),
+
+            array(    // Single text field
+                'field_id'      => 'self_email_from_email',
+                'type'          => 'text',
+                'title'         => 'From Email',
+                'description'   => 'eg. sales@campers.com',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'sales@campers.com'
+                )
+            ),
+            array(    // Single text field
+                'field_id'      => 'self_email_reply_to',
+                'type'          => 'text',
+                'title'         => 'Reply To',
+                'description'   => 'eg. sales@campers.com',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'sales@campers.com'
+                )
+            ),
+            array(    // Single text field
+                'field_id'      => 'self_email_subject',
+                'type'          => 'text',
+                'title'         => 'Subject',
+                'description'   => 'eg. Alert: Customer Camper Submitted',
+                'attributes'    => array(
+                    'size' => 60,
+                    'placeholder' => 'Your Subject'
+                )
+            ),
+            array(    // rich
+                'field_id'      => 'self_email_template',
+                'title'         => 'Email Template',
+                'type'          => 'textarea',
+                'rich'          => true,
+                'attributes'    => array(
+                    'field' => array(
+                        'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
+                    ),
+                ),
+            ),
+            array( // Submit button
+                'field_id'      => 'submit_button',
+                'type'          => 'submit',
+            )
+        );
+    }
+
+    
+    /**
+     * One of the pre-defined methods which is triggered when the registered page loads.
+     *
+     * Here we add form fields.
+     * @callback        action      load_{page slug}
+     */
+    public function load_camper_config_settings_tab_customer_emails( $oAdminPage ) {
         $this->addSettingFields(
             array(    // Single text field
                 'field_id'      => 'self_email_to',
