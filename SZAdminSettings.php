@@ -194,7 +194,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $this->addSettingFields(
 
             array(    // Single text field
-                'field_id'      => 'self_email_from_name',
+                'field_id'      => 'customer_email_from_name',
                 'type'          => 'text',
                 'title'         => 'From Name',
                 'description'   => 'eg. My Dealership',
@@ -205,7 +205,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             ),
 
             array(    // Single text field
-                'field_id'      => 'self_email_from_email',
+                'field_id'      => 'customer_email_from_email',
                 'type'          => 'text',
                 'title'         => 'From Email',
                 'description'   => 'eg. sales@campers.com',
@@ -215,7 +215,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 )
             ),
             array(    // Single text field
-                'field_id'      => 'self_email_reply_to',
+                'field_id'      => 'customer_email_reply_to',
                 'type'          => 'text',
                 'title'         => 'Reply To',
                 'description'   => 'eg. sales@campers.com',
@@ -225,7 +225,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 )
             ),
             array(    // Single text field
-                'field_id'      => 'self_email_subject',
+                'field_id'      => 'customer_email_subject',
                 'type'          => 'text',
                 'title'         => 'Subject',
                 'description'   => 'eg. Alert: Customer Camper Submitted',
@@ -235,7 +235,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 )
             ),
             array(    // rich
-                'field_id'      => 'self_email_template',
+                'field_id'      => 'customer_email_template',
                 'title'         => 'Email Template',
                 'type'          => 'textarea',
                 'rich'          => true,
@@ -246,7 +246,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 ),
             ),
             array( // Submit button
-                'field_id'      => 'submit_button',
+                'field_id'      => 'customer_submit_button',
                 'type'          => 'submit',
             )
         );
@@ -263,7 +263,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $this->addSettingFields(
 
             array(    // Single text field
-                'field_id'      => 'self_email_from_name',
+                'field_id'      => 'dealer_email_from_name',
                 'type'          => 'text',
                 'title'         => 'From Name',
                 'description'   => 'eg. My Dealership',
@@ -274,7 +274,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             ),
 
             array(    // Single text field
-                'field_id'      => 'self_email_from_email',
+                'field_id'      => 'dealer_email_from_email',
                 'type'          => 'text',
                 'title'         => 'From Email',
                 'description'   => 'eg. sales@campers.com',
@@ -284,7 +284,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 )
             ),
             array(    // Single text field
-                'field_id'      => 'self_email_reply_to',
+                'field_id'      => 'dealer_email_reply_to',
                 'type'          => 'text',
                 'title'         => 'Reply To',
                 'description'   => 'eg. sales@campers.com',
@@ -294,7 +294,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 )
             ),
             array(    // Single text field
-                'field_id'      => 'self_email_subject',
+                'field_id'      => 'dealer_email_subject',
                 'type'          => 'text',
                 'title'         => 'Subject',
                 'description'   => 'eg. Alert: Customer Camper Submitted',
@@ -304,7 +304,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 )
             ),
             array(    // rich
-                'field_id'      => 'self_email_template',
+                'field_id'      => 'dealer_email_template',
                 'title'         => 'Email Template',
                 'type'          => 'textarea',
                 'rich'          => true,
@@ -315,7 +315,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 ),
             ),
             array( // Submit button
-                'field_id'      => 'submit_button',
+                'field_id'      => 'dealer_submit_button',
                 'type'          => 'submit',
             )
         );
