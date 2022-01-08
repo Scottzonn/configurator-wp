@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.31
+    Version:        1.0.32
 */
 
 define( 'WP_DEBUG', true );
@@ -57,7 +57,7 @@ class SZCamperConfigurator {
 	 *
 	 */
 	function __construct() {
-		
+		echo '<h2>enquue scripts</h2>';
 		add_action( 'rest_api_init', function () {
 			register_rest_route( 'camperconfigurator/v1', '/send_email', array(
 			  'methods' => 'POST',
