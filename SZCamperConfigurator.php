@@ -83,8 +83,8 @@ class SZCamperConfigurator {
 	public function route_send_email(WP_REST_Request $request){
 		//gets parsed params
 		$json = $request->get_json_params();
-		$this->email_notifications->sz_sendmail($json, 'self');
 		echo $this . ' xx '. $this->email_notifications;
+		$this->email_notifications->sz_sendmail($json, 'self');
 	}
 
 	/**
