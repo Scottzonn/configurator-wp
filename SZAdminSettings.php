@@ -237,6 +237,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'rich'          => true,
                 'attributes'    => array(
                     'field' => array(
+                        'wpautop' => false,
                         'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
                     ),
                 ),
