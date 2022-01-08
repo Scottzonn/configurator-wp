@@ -138,7 +138,7 @@ class SZCamperConfigurator {
 			'[image url]' => 		$buildJson->model->featured_image->url,
 			'[accessories list]' =>	$accessories
 		);
-		echo 'here ' . $buildJson .' ' . $buildJson->customer->firstName;
+		echo 'here ' . print_r($buildJson, true) ;
 		$newStr = $string;
 		foreach($replacements as $placeholder => $literal){
 			$newStr = str_replace($placeholder, $literal, $newStr);
