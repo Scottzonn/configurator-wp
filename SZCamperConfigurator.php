@@ -85,6 +85,9 @@ class SZCamperConfigurator {
 		$json = $request->get_json_params();
 		$this->email_notifications->sendMail($json, 'self');
 		$this->email_notifications->sendMail($json, 'customer');
+		$this->email_notifications->sendMail($json, 'dealer');
+		
+		die();
 	}
 
 	/**

@@ -33,7 +33,7 @@ class SZEmailNotifications{
 			];
 			echo json_encode($response);
 		}
-		die();
+		
 	}
 
     private function getEmailFields(string $prefix){
