@@ -48,7 +48,7 @@ class SZEmailNotifications{
 		return $fields;
     }
 
-    private function parseAllTags(array $buildJson,string $fieldArray){
+    private function parseAllTags(array $buildJson, array $fieldArray){
 		foreach($fieldArray as $field => $fieldSetting){
 			$fieldArray[$field] = $this->parseTags($buildJson, $fieldSetting);
 		}
