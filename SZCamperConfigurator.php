@@ -134,16 +134,17 @@ class SZCamperConfigurator {
 			'[country]' => 			$buildJson->customer->address->country,
 			'[state]' => 			$buildJson->customer->address->state,
 			'[product name]' => 	$buildJson->product->name,
-			'[rrp]' => 				$buildJson->model->rrp,
+			'[rrp]' => 				$buildJson->model->rrp.'',
 			'[image url]' => 		$buildJson->model->featured_image->url,
 			'[accessories list]' =>	$accessories
 		);
 
+		$newStr = $string;
 		foreach($replacements as $placeholder => $literal){
-			$string = str_replace($placeholder, $literal, $string);
+			$newStr = str_replace($placeholder, $literal, $string);
 		}
 
-		return $string;
+		return $newStr;
 
 	}
 
