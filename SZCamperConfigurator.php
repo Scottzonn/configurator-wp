@@ -61,7 +61,7 @@ class SZCamperConfigurator {
 	 */
 	function __construct() {
 		$admin_settings = new SZAdminSettings;
-		$email_notifications = new SZEmailNotifications;
+		$email_notifications = new SZEmailNotifications();
 		add_action( 'rest_api_init', function () {
 			register_rest_route( 'camperconfigurator/v1', '/send_email', array(
 			  'methods' => 'POST',
@@ -80,12 +80,11 @@ class SZCamperConfigurator {
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
 	}
 
-	function route_send_email(WP_REST_Request $request){
-
+	public function route_send_email(WP_REST_Request $request){
 		//gets parsed params
 		$json = $request->get_json_params();
 		$this->email_notifications->sz_sendmail($json, 'self');
-
+		echo $this . ' xx '. $this->email_notifications;
 	}
 
 	/**
@@ -115,10 +114,6 @@ class SZCamperConfigurator {
 			array_push($this->js_scripts, 'react-plugin-' . $index);
 		}
 
-		// Variables for app use - These variables will be available in window.rpReactPlugin variable.
-		wp_localize_script( 'react-plugin-0', 'WPLocalizedReactPlugin',
-			array( 'appSelector' => $this->selector )
-		);
 	}
 
 	/**

@@ -3,6 +3,9 @@ include_once( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
 
 class SZEmailNotifications{
 
+    function __construct(){
+
+    }
 	//send email
     //prefix = self/customer/dealer
 	public function sz_sendmail(array $buildJson, string $prefix='self'){
