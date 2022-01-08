@@ -46,7 +46,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * 
      * @remark      content_{page slug}
      */    
-    public function content_camper_config_settings_tab_general( $sContent ) {      
+    public function content_camper_config_settings_tab_self_emails( $sContent ) {      
 
         $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
         return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes;
@@ -313,6 +313,3 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     //     echo $this->oDebug->get( AdminPageFramework::getOption( 'APF_AddFields' ) );
     // }
 }
-// Instantiate the class object.
-new SZAdminSettings;
-// That's it!! See, it's very short and easy, huh?
