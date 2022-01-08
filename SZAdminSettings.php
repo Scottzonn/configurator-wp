@@ -234,10 +234,12 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'field_id'      => 'customer_email_template',
                 'title'         => 'Email Template',
                 'type'          => 'textarea',
-                'rich'          => true,
+                'rich'          => array(
+                    'wpautop' => false
+                ),
                 'attributes'    => array(
                     'field' => array(
-                        'wpautop' => false,
+                        
                         'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
                     ),
                 ),
