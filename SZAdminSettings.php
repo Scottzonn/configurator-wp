@@ -332,6 +332,13 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             )
         );
     }
+
+    public function getWebhookUrl(){
+        return AdminPageFramework::getOption( 'SZAdminSettings', 'webhook_url', '');
+    }
+    public function getRequireUserDetailsFirst(){
+        return AdminPageFramework::getOption( 'SZAdminSettings', 'require_user_contact_details_upfront', '');
+    }
     /**
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
      * @callback        action      do_{page slug}

@@ -6,7 +6,7 @@ class SZEmailNotifications{
 	//send email
     //prefix = self/customer/dealer
 	public function sendMail(array $buildJson, string $prefix='self'){
-		
+
 		$userEmailFields = $this->getEmailFields($prefix);
         if( $prefix==='customer'){
             $userEmailFields["emailTo"] = $buildJson["customer"]["email"];
@@ -21,7 +21,7 @@ class SZEmailNotifications{
 
 		if(wp_mail($userEmailFields['emailTo'], $userEmailFields['emailSubject'], $userEmailFields['emailTemplate'], $headers)) {
 			$response = [
-				message => 'this worked',
+				message => 'Email Sent',
 				success => true,
 			];
 			echo json_encode($response);
@@ -36,19 +36,8 @@ class SZEmailNotifications{
 		
 	}
 
+	//move to szadminsettings
     private function getEmailFields(string $prefix){
-
-        // $getSettings = fn($fieldId, $default='') => CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_to", $default ); 
-
-        // $fields = [
-		// 	emailTo => 			$getSettings('_email_to'),
-		// 	fromName => 		$getSettings('_email_from_name', 'Camper Configurator' ),
-		// 	fromEmail => 		$getSettings('_email_from_email', 'Camper Configurator' ),
-		// 	emailReplyTo => 	$getSettings('_email_reply_to', 'Camper Configurator' ),
-		// 	emailTemplate => 	$getSettings('_email_template'),
-		// 	emailSubject => 	$getSettings('_email_subject', 'New Camper Submitted' ),
-		// ];
-
         $fields = [
 			emailTo => 			CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_to", '' ),
 			fromName => 		CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_from_name", 'Camper Configurator' ),
@@ -57,7 +46,6 @@ class SZEmailNotifications{
 			emailTemplate => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_template", '' ),
 			emailSubject => 	CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', "{$prefix}_email_subject", 'New Camper Submitted' ),
 		];
-
 		return $fields;
     }
 

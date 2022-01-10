@@ -69,12 +69,12 @@ class SZCamperConfigurator {
 			) );
 		  } );
 
-		  add_action( 'rest_api_init', function () {
-			register_rest_route( 'camperconfigurator/v1', '/webhook', array(
-			  'methods' => 'POST',
-			  'callback' => [$this, 'route_send_email']
+		add_action( 'rest_api_init', function () {
+			register_rest_route( 'camperconfigurator/v1', '/settings', array(
+				'methods' => 'POST',
+				'callback' => [$this, 'route_settings']
 			) );
-		  } );
+		} );	
 
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
@@ -89,6 +89,18 @@ class SZCamperConfigurator {
 		
 		die();
 	}
+	public function route_settings(WP_REST_Request $request){
+		$response = [
+			message => 'Settings Retrieved',
+			data => [
+				webhook => $this->admin_settings->getWebhookUrl(),
+				require_user_details_first => $this->admin_settings->getRequireUserDetailsFirst()
+			],
+			success => true,
+		];
+		echo json_encode($response);
+	}
+
 
 	/**
 	 * Load react app files in WordPress admin.
@@ -163,6 +175,7 @@ class SZCamperConfigurator {
 			'product' => $atts['product'],
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
+			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
 		wp_localize_script(
