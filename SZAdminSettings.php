@@ -26,6 +26,10 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'title'     =>    __( 'General Settings', 'sztext' ),
             ),        
             array(
+                'tab_slug'  =>    'tab_manufacturer_settings',
+                'title'     =>    __( 'Manufacturer Settings', 'sztext' ),
+            ), 
+            array(
                 'tab_slug'  =>    'tab_self_emails',
                 'title'     =>    __( 'Admin Email Notifications', 'sztext' ),
             ),
@@ -100,7 +104,30 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             )
         );
     }
-
+    /**
+     * One of the pre-defined methods which is triggered when the registered page loads.
+     *
+     * Here we add form fields.
+     * @callback        action      load_{page slug}
+     */
+    public function load_camper_config_settings_tab_manufacturer_settings( $oAdminPage ) {
+        $this->addSettingFields(
+            array(
+                'field_id'      => 'dealer_checkboxes',
+                'title'         => __( 'Our Dealers', 'admin-page-framework-loader' ),
+                'type'          => 'checkbox',
+                'label'         => array(
+                    'thedirt'  =>       __( 'The Dirt', 'admin-page-framework-loader' ),
+                    'tracktrailer' =>   __( 'Track Trailer', 'admin-page-framework-loader' ),
+                ),
+                'after_label'   => '<br />',
+            ),            
+            array( // Submit button
+                'field_id'      => 'submit_button',
+                'type'          => 'submit',
+            )
+        );
+    }
 
     /**
      * One of the pre-defined methods which is triggered when the registered page loads.
