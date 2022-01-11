@@ -111,13 +111,14 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * @callback        action      load_{page slug}
      */
     public function load_camper_config_settings_tab_manufacturer_settings( $oAdminPage ) {
+        //names must match strapi exactly
         $this->addSettingFields(
             array(
                 'field_id'      => 'dealer_checkboxes',
                 'title'         => __( 'Our Dealers', 'admin-page-framework-loader' ),
                 'type'          => 'checkbox',
                 'label'         => array(
-                    'thedirt'  =>       __( 'The Dirt', 'admin-page-framework-loader' ),
+                    'thedirt'  =>       __( 'The Dirt Off Road Campers', 'admin-page-framework-loader' ),
                     'tracktrailer' =>   __( 'Track Trailer', 'admin-page-framework-loader' ),
                 ),
                 'after_label'   => '<br />',
