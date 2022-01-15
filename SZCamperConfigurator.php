@@ -111,7 +111,7 @@ class SZCamperConfigurator {
 		$response = curl_exec($curl);
 
 		curl_close($curl);
-		$response_json = json_decode($response)
+		$response_json = json_decode($response);
 		echo json_encode([
 			message => $response_json,
 			success => true
