@@ -113,7 +113,8 @@ class SZCamperConfigurator {
 		curl_close($curl);
 		$response_json = json_decode($response);
 		echo json_encode([
-			message => $response_json,
+			data => $response_json,
+			message => 'Build Sent to webhook',
 			success => true
 		]);
 
