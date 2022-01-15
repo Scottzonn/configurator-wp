@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.45
+    Version:        1.0.46
 */
 
 define( 'WP_DEBUG', true );
@@ -75,9 +75,44 @@ class SZCamperConfigurator {
 				'callback' => [$this, 'route_settings']
 			) );
 		} );	
+		
+		add_action( 'rest_api_init', function () {
+			register_rest_route( 'camperconfigurator/v1', '/call_webhook', array(
+				'methods' => 'POST',
+				'callback' => [$this, 'route_call_webhook']
+			) );
+		} );	
 
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
+	}
+
+	//todo sanitize request data
+	public function route_call_webhook(WP_REST_Request $request){
+		$json = $request->get_json_params();
+
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => $this->admin_settings->getWebhookUrl(),
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS => json_encode($request),
+		CURLOPT_HTTPHEADER => array(
+			'Content-Type: application/json'
+		),
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+		echo $response;
+
+
 	}
 
 	public function route_send_email(WP_REST_Request $request){
@@ -176,6 +211,7 @@ class SZCamperConfigurator {
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
 			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
+
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
 		wp_localize_script(
