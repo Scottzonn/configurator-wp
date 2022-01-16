@@ -88,6 +88,11 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'label'         => 'Require user contact details before showing prices',
                 'default'   => false,
             ),
+            array(
+                'field_id'      => 'accent_colour',
+                'title'         => __( 'Accent Colour', 'admin-page-framework-loader' ),
+                'type'          => 'color',
+            ),
             array(    // Single text field
                 'field_id'      => 'webhook_url',
                 'type'          => 'text',
@@ -367,6 +372,10 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     public function getRequireUserDetailsFirst(){
         return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'require_user_contact_details_upfront', '');
     }
+    public function getAccentColor(){
+        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'accent_color', '#f26100');
+    }
+
     /**
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
      * @callback        action      do_{page slug}

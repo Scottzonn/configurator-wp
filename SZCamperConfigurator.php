@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.46
+    Version:        1.0.51
 */
 
 define( 'WP_DEBUG', true );
@@ -87,7 +87,7 @@ class SZCamperConfigurator {
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
 	}
 
-	//todo sanitize request data
+	//todo VALIDATE request data
 	public function route_call_webhook(WP_REST_Request $request){
 		$json = $request->get_json_params();
 
@@ -130,11 +130,11 @@ class SZCamperConfigurator {
 		
 		die();
 	}
+	//data is actually sent to react JS via localize script, rather than this
 	public function route_settings(WP_REST_Request $request){
 		$response = [
 			message => 'Settings Retrieved',
 			data => [
-				webhook => $this->admin_settings->getWebhookUrl(),
 				require_user_details_first => $this->admin_settings->getRequireUserDetailsFirst()
 			],
 			success => true,
@@ -216,7 +216,9 @@ class SZCamperConfigurator {
 			'product' => $atts['product'],
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
+			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',
 			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
+			'accent_color' => $this->admin_settings->getAccentColor()
 
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
