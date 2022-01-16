@@ -218,7 +218,7 @@ class SZCamperConfigurator {
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
 			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',
 			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
-			'accent_color' => $this->admin_settings->getAccentColour()
+			'accent_color' => $this->admin_settings->getAccentColor()
 
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.

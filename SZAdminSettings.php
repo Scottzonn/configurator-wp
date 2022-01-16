@@ -89,7 +89,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'default'   => false,
             ),
             array(
-                'field_id'      => 'accent_colour',
+                'field_id'      => 'accent_color',
                 'title'         => __( 'Accent Colour', 'admin-page-framework-loader' ),
                 'type'          => 'color',
                 'default'       => '#f26100',
@@ -373,8 +373,8 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     public function getRequireUserDetailsFirst(){
         return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'require_user_contact_details_upfront', '');
     }
-    public function getAccentColour(){
-        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'accent_colour');
+    public function getAccentColor(){
+        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'accent_color', '');
     }
 
     /**
