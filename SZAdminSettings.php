@@ -374,7 +374,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'require_user_contact_details_upfront', '');
     }
     public function getAccentColor(){
-        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'accent_color', '#f26100');
+        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'accent_color');
     }
 
     /**
