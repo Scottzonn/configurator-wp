@@ -92,7 +92,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'field_id'      => 'accent_colour',
                 'title'         => __( 'Accent Colour', 'admin-page-framework-loader' ),
                 'type'          => 'color',
-                'default'       => '#f26100',
+                // 'default'       => '#f26100',
             ),
             array(    // Single text field
                 'field_id'      => 'webhook_url',
