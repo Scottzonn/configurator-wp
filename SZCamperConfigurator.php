@@ -89,7 +89,7 @@ class SZCamperConfigurator {
 
 	//todo VALIDATE request data
 	public function route_call_webhook(WP_REST_Request $request){
-		$json = $request->get_json_params();
+		$json = $request->get_body();
 
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
