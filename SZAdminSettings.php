@@ -83,7 +83,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $this->addSettingFields(
             array(
                 'field_id'      => 'require_user_contact_details_upfront',
-                'title'         => 'Require User Details First',
+                'title'         => 'Require Contact Details',
                 'type'          => 'checkbox',
                 'label'         => 'Require user contact details before showing prices',
                 'default'   => false,
@@ -374,7 +374,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'require_user_contact_details_upfront', '');
     }
     public function getAccentColor(){
-        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'accent_color', '');
+        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'accent_color', '#f26100');
     }
 
     /**
