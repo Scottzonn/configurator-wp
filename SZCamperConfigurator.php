@@ -102,7 +102,7 @@ class SZCamperConfigurator {
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => 'POST',
 		// CURLOPT_POSTFIELDS => json_encode($request),
-		CURLOPT_POSTFIELDS => $json,
+		CURLOPT_POSTFIELDS => json_encode($json),
 		CURLOPT_HTTPHEADER => array(
 			'Content-Type: application/json'
 		),
