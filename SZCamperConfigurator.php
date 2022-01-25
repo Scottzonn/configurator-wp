@@ -164,9 +164,9 @@ class SZCamperConfigurator {
 		}
 
 		// Register js files. Load them later when required (in shortcode)
-		foreach ( $js_files as $index => $js_file ) {
-			wp_register_script('react-plugin-' . $index, RP_REACT_APP_BUILD . $js_file, array(), RP_PLUGIN_VERSION, true);
-			array_push($this->js_scripts, 'react-plugin-' . $index);
+		foreach ( $js_files as $index2 => $js_file ) {
+			wp_register_script('react-plugin-' . $index2, RP_REACT_APP_BUILD . $js_file, array(), RP_PLUGIN_VERSION, true);
+			array_push($this->js_scripts, 'react-plugin-' . $index2);
 		}
 
 	}
@@ -218,7 +218,7 @@ class SZCamperConfigurator {
 			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',
 			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
 			'accent_color' => $this->admin_settings->getAccentColor(),
-			'require_details_first' => $this->admin_settings->getRequireUserDetailsFirst()
+			'require_details_first' => $this->admin_settings->getRequireUserDetailsFirst(),
 
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
