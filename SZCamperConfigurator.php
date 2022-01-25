@@ -5,7 +5,7 @@
     Description:    Camper configurator for Australian brands
     Author:         Scott Zonneveldt
     Author URI:     http://webcrunch.com.au
-    Version:        1.0.52
+    Version:        1.0.53
 */
 
 define( 'WP_DEBUG', true );
@@ -217,7 +217,8 @@ class SZCamperConfigurator {
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
 			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',
 			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
-			'accent_color' => $this->admin_settings->getAccentColor()
+			'accent_color' => $this->admin_settings->getAccentColor(),
+			'require_user_contact_details_upfront' => $this->admin_settings->getRequireUserDetailsFirst()
 
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
