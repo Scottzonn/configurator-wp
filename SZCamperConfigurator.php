@@ -223,7 +223,7 @@ class SZCamperConfigurator {
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
 		wp_localize_script(
-			'react-plugin-0',
+			$this->js_scripts[0],
 			'szReactPlugin',
 			$localized_data
 		);
