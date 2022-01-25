@@ -239,6 +239,6 @@ class SZCamperConfigurator {
 	}
 
 
-#e41212
+
 
 }
