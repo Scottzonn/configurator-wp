@@ -98,7 +98,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'field_id'      => 'webhook_url',
                 'type'          => 'text',
                 'title'         => 'Webhook URL (Optional)',
-                'description'   => 'Customer build data will be sent',
+                'description'   => 'Customer build data and contact details will be sent to this URL. <p>The webhook will get called twice. Once when a customer fills in their contact details, and a second time when they complete their build.</p>',
                 'attributes'    => array(
                     'size' => 60,
                     'placeholder' => 'https://www.integromat.com/yoururl'
