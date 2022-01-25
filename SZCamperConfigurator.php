@@ -218,7 +218,7 @@ class SZCamperConfigurator {
 			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',
 			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
 			'accent_color' => $this->admin_settings->getAccentColor(),
-			'require_user_contact_details_upfront' => $this->admin_settings->getRequireUserDetailsFirst()
+			'require_details_first' => $this->admin_settings->getRequireUserDetailsFirst()
 
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
@@ -239,6 +239,6 @@ class SZCamperConfigurator {
 	}
 
 
-
+#e41212
 
 }
