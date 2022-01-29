@@ -60,9 +60,11 @@ class SZEmailNotifications{
 
 		$accessories = '';
 		foreach($buildJson["accessories"] as $accessory){
-			$accessories .= '<li>'. $accessory["name"] . ' - ' . $accessory["rrp"] . '</li>';
+			$accessories .= '<li>'. $accessory["name"] . ' - $' . $accessory["rrp"] . ' - Part No. ' . $accessory["part_number"] .'</li>';
 		}
 		$accessories = '<ul>' . $accessories . '</ul>';
+
+		
 
 		$replacements = array(
 			'[first name]' 		=>  $buildJson["customer"]["firstName"],
