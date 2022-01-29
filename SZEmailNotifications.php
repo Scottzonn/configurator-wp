@@ -95,9 +95,10 @@ class SZEmailNotifications{
 		if($matches_num >= 1) {
 			$innerContent = $this->parseLoopContent($buildJson, $matches[0][1]);
 			$newStr = preg_replace('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $innerContent, $newStr);
-		} else {
+			$newStr .= "here is the match";
 			$newStr .= print_r($matches, true);
-		}
+			$newStr .= "here is the content" . $innerContent;
+		} 
 
 
 		return $newStr;
