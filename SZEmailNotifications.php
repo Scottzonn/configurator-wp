@@ -90,7 +90,27 @@ class SZEmailNotifications{
 			$newStr = str_replace($placeholder, $literal, $newStr);
 		}
 
+		//get contents between loop tags
+		$results_num = preg_match_all('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $newStr, $matches);
+		if($results_num >= 2) {
+			$innerContent = $this->parseLoopContent($buildJson, $newStr);
+			preg_replace('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $innerContent, $newStr);
+		}
+
+
 		return $newStr;
 
+	}
+
+	private function parseLoopContent(array $buildJson, $string){
+
+		$res = '';
+		foreach($buildJson["accessories"] as $accessory){
+			$line = str_replace("[acc_name]", $accessory["accessories"]["name"], $string);
+			$line = str_replace("[acc_rrp]", $accessory["accessories"]["rrp"], $line);
+			$line = str_replace("[acc_part_number]", $accessory["accessories"]["part_number"], $line);
+			$res .= $line;
+		}
+		return $res;
 	}
 }
