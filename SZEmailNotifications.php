@@ -109,9 +109,9 @@ class SZEmailNotifications{
 
 		$res = '';
 		foreach($buildJson["accessories"] as $accessory){
-			$line = str_replace("[acc_name]", $accessory["accessories"]["name"], $string);
-			$line = str_replace("[acc_rrp]", $accessory["accessories"]["rrp"], $line);
-			$line = str_replace("[acc_part_number]", $accessory["accessories"]["part_number"], $line);
+			$line = str_replace("[acc_name]", $accessory["name"], $string);
+			$line = str_replace("[acc_rrp]", $accessory["rrp"], $line);
+			$line = str_replace("[acc_part_number]", $accessory["part_number"], $line);
 			$res .= $line;
 		}
 		return $res;
