@@ -52,7 +52,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */    
     public function content_camper_config_settings_tab_self_emails( $sContent ) {      
         $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
-        $loop = "<p>You can loop through accessories like so:</p>";
+        $loop = "<p>[accessories list] prints a default list, but you can do a custom display by looping through accessories like so:</p>";
         $loop .= "[acc_loop]<br>";
         $loop .= "[acc_name] - $[acc_rrp] - Part Number:[acc_part_number]<br>";
         $loop .= "[/acc_loop]<br>";
@@ -66,7 +66,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */    
     public function content_camper_config_settings_tab_customer_emails( $sContent ) {      
         $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
-        $loop = "<p>You can loop through accessories like so:</p>";
+        $loop = "<p>[accessories list] prints a default list, but you can do a custom display by looping through accessories like so:</p>";
         $loop .= "[acc_loop]<br>";
         $loop .= "[acc_name] - $[acc_rrp] - Part Number:[acc_part_number]<br>";
         $loop .= "[/acc_loop]<br>";
@@ -80,7 +80,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */    
     public function content_camper_config_settings_tab_dealer_emails( $sContent ) {      
         $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
-        $loop = "<p>You can loop through accessories like so:</p>";
+        $loop = "<p>[accessories list] prints a default list, but you can do a custom display by looping through accessories like so:</p>";
         $loop .= "[acc_loop]<br>";
         $loop .= "[acc_name] - $[acc_rrp] - Part Number:[acc_part_number]<br>";
         $loop .= "[/acc_loop]<br>";
