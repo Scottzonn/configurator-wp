@@ -52,7 +52,12 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */    
     public function content_camper_config_settings_tab_self_emails( $sContent ) {      
         $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
-        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes;
+        $loop = "<p>You can loop through accessories like so:</p>";
+        $loop .= "[acc_loop]<br>";
+        $loop .= "[acc_name] - $[acc_price] - Part Number:[acc_part_number]<br>";
+        $loop .= "[/acc_loop]<br>";
+        
+        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $loop;
     }
     /**
      * One of the predefined callback method.
@@ -61,7 +66,12 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */    
     public function content_camper_config_settings_tab_customer_emails( $sContent ) {      
         $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
-        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes;
+        $loop = "<p>You can loop through accessories like so:</p>";
+        $loop .= "[acc_loop]<br>";
+        $loop .= "[acc_name] - $[acc_price] - Part Number:[acc_part_number]<br>";
+        $loop .= "[/acc_loop]<br>";
+        
+        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $loop;
     }
     /**
      * One of the predefined callback method.
@@ -70,7 +80,12 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */    
     public function content_camper_config_settings_tab_dealer_emails( $sContent ) {      
         $shortcodes = "[first name] [surname] [full name] [email] [postcode] [phone] [address line 1] [address line 2] [city] [country] [state] [product name] [rrp] [image url] [accessories list]";
-        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes;
+        $loop = "<p>You can loop through accessories like so:</p>";
+        $loop .= "[acc_loop]<br>";
+        $loop .= "[acc_name] - $[acc_price] - Part Number:[acc_part_number]<br>";
+        $loop .= "[/acc_loop]<br>";
+        
+        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $loop;
     }
 
     /**
