@@ -91,9 +91,9 @@ class SZEmailNotifications{
 		}
 
 		//get contents between loop tags
-		$matches = preg_match_all('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $newStr, $matches);
-		if($matches >= 2) {
-			$innerContent = $this->parseLoopContent($buildJson, $matches[1]);
+		$matches_num = preg_match_all('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $newStr, $matches);
+		if($matches_num >= 1) {
+			$innerContent = $this->parseLoopContent($buildJson, $matches[0][1]);
 			$newStr = preg_replace('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $innerContent, $newStr);
 		} else {
 			$newStr .= print_r($matches, true);
