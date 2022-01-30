@@ -218,6 +218,8 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                     'wpautop' => false
                 ),
                 'attributes'    => array(
+                    'rows' => 24,
+                    'cols' => 120,
                     'field' => array(
                         'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
                     ),
@@ -406,3 +408,12 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     //     echo $this->oDebug->get( AdminPageFramework::getOption( 'APF_AddFields' ) );
     // }
 }
+
+
+function additionalStyles( $sCSSRules ) {
+    return $sCSSRules
+        . '.sz-field .sz-input-label-container{ display:block; width: 100%; }'
+        . '.sz-field sz-field-textarea {width: 100%;} ';
+
+}
+add_filter( 'style_common_admin_page_framework', 'additionalStyles' );
