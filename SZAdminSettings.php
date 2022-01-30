@@ -218,7 +218,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                     'wpautop' => false
                 ),
                 'attributes'    => array(
-                    'rows' => 24,
+                    'rows' => 30,
                     'cols' => 120,
                     'field' => array(
                         'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
@@ -291,6 +291,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                     'wpautop' => false
                 ),
                 'attributes'    => array(
+                    'rows' => 30,
                     'field' => array(
                         
                         'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
@@ -372,6 +373,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                     'wpautop' => false
                 ),
                 'attributes'    => array(
+                    'rows' => 30,
                     'field' => array(
                         'style' => 'width: 100%;' // since the rich editor does not accept the cols attribute, set the width by inline-style.
                     ),
