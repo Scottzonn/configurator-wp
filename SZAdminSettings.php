@@ -41,6 +41,10 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'tab_slug'  =>    'tab_dealer_emails',
                 'title'     =>    __( 'Dealer Email Notification', 'sztext' ),
             ), 
+            array(
+                'tab_slug'  =>    'tab_help',
+                'title'     =>    __( 'Shortcodes', 'sztext' ),
+            ),
             
         );    
     }
@@ -86,6 +90,22 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $loop .= "[/acc_loop]<br>";
         
         return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $loop;
+    }
+
+    /**
+     * One of the predefined callback method.
+     * 
+     * @remark      content_{page slug}
+     */    
+    public function content_camper_config_settings_tab_help( $sContent ) {      
+        $shortcodes = "Use [camper_configurator] shortcode to embed the configurator on any page";
+        $info = "<p>To default to a specific product (eg. for use on a product or model page) you can add attributes</p>";
+        $info .= "<p>[camper_configurator product=\"tvan\"] or</p>";
+        $info .= "<p>[camper_configurator product=\"tvan\" model=\"Inspire\"]</p>";
+        $info .= "<p>Note: If you specify a model, you must also specify the corresponding product</p>";
+        $info .= "<p>The embedded configurators will respect your \"Require User Details First\" setting (see General Setting)</p>";
+        
+        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $info;
     }
 
     /**

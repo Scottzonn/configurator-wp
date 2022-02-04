@@ -206,13 +206,15 @@ class SZCamperConfigurator {
 	{
         //set up [camper_configurator] shortcode
 		$atts = shortcode_atts(array(
-			'product' => 'wreath'
+			'model' => 'all',
+			'product' => 'all',
 		), $atts, 'camper_configurator');
 
 		
 		//must localize after script is registered
 		$localized_data = array(
 			'product' => $atts['product'],
+			'model' => $atts['model'],
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
 			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',
