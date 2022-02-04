@@ -98,8 +98,8 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * @remark      content_{page slug}
      */    
     public function content_camper_config_settings_tab_help( $sContent ) {      
-        $shortcodes = "<p>Use <strong>[camper_configurator]</strong> shortcode to embed the configurator on any page";
-        $info = "To default to a specific product (eg. for use on a product or model page) you can add attributes</p>";
+        $shortcodes = "<p>Use <strong>[camper_configurator]</strong> shortcode to embed the configurator on any page. ";
+        $info = "To default to a specific product (eg. for use on a product or model page) you can add attributes:</p>";
         $info .= "<p><strong>[camper_configurator product=\"tvan\"]</strong> or</p>";
         $info .= "<p><strong>[camper_configurator product=\"tvan\" model=\"Inspire\"]</strong></p>";
         $info .= "<p>Note: If you specify a model, you must also specify the corresponding product.</p>";
