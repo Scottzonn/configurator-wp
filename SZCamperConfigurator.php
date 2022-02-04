@@ -206,8 +206,8 @@ class SZCamperConfigurator {
 	{
         //set up [camper_configurator] shortcode
 		$atts = shortcode_atts(array(
-			'model' => 'all',
-			'product' => 'all',
+			'model' => '',
+			'product' => '',
 		), $atts, 'camper_configurator');
 
 		
