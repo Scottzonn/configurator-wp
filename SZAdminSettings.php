@@ -98,12 +98,12 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * @remark      content_{page slug}
      */    
     public function content_camper_config_settings_tab_help( $sContent ) {      
-        $shortcodes = "Use [camper_configurator] shortcode to embed the configurator on any page";
-        $info = "<p>To default to a specific product (eg. for use on a product or model page) you can add attributes</p>";
-        $info .= "<p>[camper_configurator product=\"tvan\"] or</p>";
-        $info .= "<p>[camper_configurator product=\"tvan\" model=\"Inspire\"]</p>";
-        $info .= "<p>Note: If you specify a model, you must also specify the corresponding product</p>";
-        $info .= "<p>The embedded configurators will respect your \"Require User Details First\" setting (see General Setting)</p>";
+        $shortcodes = "<p>Use <strong>[camper_configurator]</strong> shortcode to embed the configurator on any page";
+        $info = "To default to a specific product (eg. for use on a product or model page) you can add attributes</p>";
+        $info .= "<p><strong>[camper_configurator product=\"tvan\"]</strong> or</p>";
+        $info .= "<p><strong>[camper_configurator product=\"tvan\" model=\"Inspire\"]</strong></p>";
+        $info .= "<p>Note: If you specify a model, you must also specify the corresponding product.</p>";
+        $info .= "<p>Note: The embedded configurators will respect your \"Require User Details First\" setting (see General Settings).</p>";
         
         return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $info;
     }
