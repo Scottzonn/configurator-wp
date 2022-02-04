@@ -213,8 +213,8 @@ class SZCamperConfigurator {
 		
 		//must localize after script is registered
 		$localized_data = array(
-			'product' => $atts['product'],
-			'model' => $atts['model'],
+			'default_product' => $atts['product'],
+			'default_model' => $atts['model'],
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
 			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',
