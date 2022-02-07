@@ -47,6 +47,8 @@ class SZWoocommerce {
             ),
         ) );  
 
+        return $id;
+
     }
 
     
