@@ -162,7 +162,8 @@ class SZCamperConfigurator {
 		$json = $request->get_json_params();
 		$woo = new SZWoocommerce();
 		$product_id = $woo->addBuildToCart($json);
-		WC()->cart->add_to_cart( $product_id );
+		global $woocommerce;
+		$woocommerce->cart->add_to_cart( $product_id );
 		wp_safe_redirect( wc_get_checkout_url() );
 
 	}
