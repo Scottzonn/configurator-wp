@@ -16,6 +16,7 @@ define( 'SAVEQUERIES', true );
 //load the admin interface
 include_once( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
 include_once( plugin_dir_path( __FILE__ ) . 'SZEmailNotifications.php');
+include_once( plugin_dir_path( __FILE__ ) . 'SZWoocommerce.php');
 
 // Setting react app path constants.
 define('RP_PLUGIN_VERSION','0.1.0' );
@@ -139,6 +140,24 @@ class SZCamperConfigurator {
 			success => true,
 		];
 		echo json_encode($response);
+	}
+
+	public function route_add_to_cart(WP_REST_Request $request){
+		// /**
+		//  * Check if WooCommerce is activated
+		//  */
+		// if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+		// 	function is_woocommerce_activated() {
+		// 		if ( class_exists( 'woocommerce' ) ) { return true; } else { return false; }
+		// 	}
+		// }
+		
+		$json = $request->get_json_params();
+		$woo = new SZWoocommerce();
+		$product_id = $woo->addBuildToCart($json);
+		WC()->cart->add_to_cart( $product_id );
+		wp_safe_redirect( wc_get_checkout_url() );
+
 	}
 
 
