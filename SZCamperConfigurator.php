@@ -84,6 +84,13 @@ class SZCamperConfigurator {
 			) );
 		} );	
 
+		add_action( 'rest_api_init', function () {
+			register_rest_route( 'camperconfigurator/v1', '/add_to_cart', array(
+				'methods' => 'POST',
+				'callback' => [$this, 'route_add_to_cart']
+			) );
+		} );	
+
 		add_action('wp_enqueue_scripts', [$this,'load_react_app']);
 		add_shortcode('camper_configurator', [$this, 'configurator_shortcode']);
 	}
