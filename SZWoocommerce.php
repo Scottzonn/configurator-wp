@@ -46,7 +46,7 @@ class SZWoocommerce {
                 ),
             ),
         ) );  
-        print_r($id);
+        // print_r($id);
 
         return $id;
 
