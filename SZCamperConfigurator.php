@@ -162,9 +162,7 @@ class SZCamperConfigurator {
 		$json = $request->get_json_params();
 		$woo = new SZWoocommerce();
 		$product_id = $woo->addBuildToCart($json);
-		global $woocommerce;
-		$woocommerce->cart->add_to_cart( $product_id );
-		wp_safe_redirect( wc_get_checkout_url() );
+		wp_safe_redirect( "https://trailerconfdev.wpengine.com/checkout/?add-to-cart=" . $product_id );
 
 	}
 
