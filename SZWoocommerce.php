@@ -25,13 +25,13 @@ class SZWoocommerce {
         $id = $this->create_product(array(
 
             'type'               => '', // Simple product by default
-            'name'               => __("The product title", "woocommerce"),
-            'description'        => __("The product description…", "woocommerce"),
-            'short_description'  => __("The product short description…", "woocommerce"),
+            'name'               => $buildJson['model']['name'],
+            'description'        => "A custom build",
+            'short_description'  => "A custom Build short desc",
             // 'sku'                => '',
-            'regular_price'      => '5.00', // product price
+            'regular_price'      => $buildJson['totalPrice'],
             // 'sale_price'         => '',
-            'reviews_allowed'    => true,
+            'reviews_allowed'    => false,
             'attributes'         => array(
                 // Taxonomy and term name values
                 'pa_color' => array(
