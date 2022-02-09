@@ -30,6 +30,7 @@ class SZWoocommerce {
             'short_description'  => "A custom Build short desc",
             // 'sku'                => '',
             'regular_price'      => $buildJson['totalPrice'],
+            'visibility'         => 'hidden', //or search/catalog/visible
             // 'sale_price'         => '',
             'reviews_allowed'    => false,
             'attributes'         => array(
