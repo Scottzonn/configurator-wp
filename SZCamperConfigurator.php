@@ -159,8 +159,8 @@ class SZCamperConfigurator {
 		// 	}
 		// }
 		
-		$json = $request->get_body();
-
+		$json =$request->get_json_params();
+		error_log( print_r( $json, true ) );
 		$woo = new SZWoocommerce();
 		$product_id = $woo->addBuildToCart($json);
 		// wp_safe_redirect( "https://trailerconfdev.wpengine.com/checkout/?add-to-cart=" . $product_id );
