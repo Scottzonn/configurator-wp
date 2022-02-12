@@ -26,7 +26,7 @@ class SZWoocommerce {
 
             'type'               => '', // Simple product by default
             'name'               => $buildJson['model']['name'],
-            'description'        => json_encode($buildJson, JSON_HEX_TAG),
+            'description'        => $buildJson,
             'short_description'  => "A custom Build short desc",
             // 'sku'                => '',
             'regular_price'      => $buildJson['totalPrice'] . "",
@@ -47,7 +47,7 @@ class SZWoocommerce {
                 ),
             ),
         ) );  
-        echo json_encode($buildJson, JSON_HEX_TAG);
+
 
         return $id;
 
