@@ -26,10 +26,10 @@ class SZWoocommerce {
 
             'type'               => '', // Simple product by default
             'name'               => $buildJson['model']['name'],
-            'description'        => json_encode($buildJson),
+            'description'        => json_encode($buildJson, JSON_HEX_TAG),
             'short_description'  => "A custom Build short desc",
             // 'sku'                => '',
-            'regular_price'      => $buildJson['totalPrice'],
+            'regular_price'      => $buildJson['totalPrice'] . "",
             'visibility'         => 'hidden', //or search/catalog/visible
             // 'sale_price'         => '',
             'reviews_allowed'    => false,
