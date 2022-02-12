@@ -239,6 +239,7 @@ class SZCamperConfigurator {
 		$atts = shortcode_atts(array(
 			'model' => '',
 			'product' => '',
+			'mode' => '',
 		), $atts, 'camper_configurator');
 
 		
@@ -246,6 +247,7 @@ class SZCamperConfigurator {
 		$localized_data = array(
 			'default_product' => $atts['product'],
 			'default_model' => $atts['model'],
+			'mode' => $atts['mode'],
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
 			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',

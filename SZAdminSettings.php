@@ -104,6 +104,10 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $info .= "<p><strong>[camper_configurator product=\"tvan\" model=\"Inspire\"]</strong></p>";
         $info .= "<p>Note: If you specify a model, you must also specify the corresponding product.</p>";
         $info .= "<p>Note: The embedded configurators will respect your \"Require User Details First\" setting (see General Settings).</p>";
+        $info .= "<h3>Dealer Mode</h3>";
+        $info .= "<p>[camper_configurator mode=\"dealer\"]</p>";
+        $info .= "<p>This will add the configurator in dealer mode which allows your staff to input further details such as: Discount, Wheel Matching, Build Date, Comments, Location (show/showroom)</p>";
+        
         
         return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $info;
     }
