@@ -26,7 +26,7 @@ class SZWoocommerce {
 
             'type'               => '', // Simple product by default
             'name'               => $buildJson['model']['name'],
-            'description'        => "A custom build",
+            'description'        => json_encode($buildJson),
             'short_description'  => "A custom Build short desc",
             // 'sku'                => '',
             'regular_price'      => $buildJson['totalPrice'],

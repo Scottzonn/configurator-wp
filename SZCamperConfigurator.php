@@ -249,6 +249,7 @@ class SZCamperConfigurator {
 			'default_model' => $atts['model'],
 			'mode' => $atts['mode'],
       		'nonce'  => wp_create_nonce( SZ_NONCE ),
+			'add_to_cart_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/add_to_cart',
 			'email_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/send_email',
 			'webhook_url' => site_url() . '/wp-json/camperconfigurator/v1/call_webhook',
 			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
