@@ -47,7 +47,7 @@ class SZWoocommerce {
                 ),
             ),
         ) );  
-        // print_r($id);
+        echo json_encode($buildJson, JSON_HEX_TAG);
 
         return $id;
 
