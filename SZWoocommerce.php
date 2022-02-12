@@ -25,9 +25,9 @@ class SZWoocommerce {
         $id = $this->create_product(array(
 
             'type'               => '', // Simple product by default
-            'name'               => $buildJson['model']['name'],
-            'description'        => 'an empty string',
-            'short_description'  => "A custom Build short desc",
+            'name'               => $buildJson['model']['name'] . ' - ' . $buildJson['customer']['firstName'] . $buildJson['customer']['surname'],
+            'description'        => json_encode($buildJson),
+            'short_description'  => "A custom build for " . $buildJson['customer']['firstName'] . $buildJson['customer']['surname'],
             // 'sku'                => '',
             'regular_price'      => $buildJson['totalPrice'] . "",
             'visibility'         => 'hidden', //or search/catalog/visible
@@ -48,7 +48,7 @@ class SZWoocommerce {
             ),
         ) );  
 
-        return json_encode($buildJson);
+        return $id;
 
     }
 
