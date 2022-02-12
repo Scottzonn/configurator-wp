@@ -48,7 +48,6 @@ class SZWoocommerce {
             ),
         ) );  
 
-
         return json_encode($buildJson);
 
     }
