@@ -166,7 +166,8 @@ class SZCamperConfigurator {
 		
 		$response = [
 			data => [
-				redirect_url => "https://trailerconfdev.wpengine.com/checkout/?add-to-cart=" . $product_id				
+				redirect_url => "https://trailerconfdev.wpengine.com/checkout/?add-to-cart=" . $product_id,
+				encoded_json => json_encode($json),			
 			],
 		];
 		echo json_encode($response);
