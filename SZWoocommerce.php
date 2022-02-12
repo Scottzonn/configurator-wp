@@ -20,7 +20,7 @@ class SZWoocommerce {
         
     }
 
-    public function addBuildToCart(array $buildJson){
+    public function addBuildToCart( $buildJson){
 
         $id = $this->create_product(array(
 
