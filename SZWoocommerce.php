@@ -1,8 +1,23 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+// require __DIR__ . '/vendor/autoload.php';
 
-use Automattic\WooCommerce\Client;
+// use Automattic\WooCommerce\Client;
+
+
+add_filter('woocommerce_cart_item_remove_link', 'customized_cart_item_remove_link', 20, 2 );
+function customized_cart_item_remove_link( $button_link, $cart_item_key ){
+    // $targeted_products_ids = array( 98,99,100 );
+
+    $cart_item = WC()->cart->get_cart()[$cart_item_key];
+
+    // if( in_array($cart_item['data']->get_id(), $targeted_products_ids) )
+    //     $button_link = '';
+
+    return 'szlink'.$button_link.'szlink';
+}
+
+
 
 class SZWoocommerce {
 
@@ -25,7 +40,7 @@ class SZWoocommerce {
         $id = $this->create_product(array(
 
             'type'               => '', // Simple product by default
-            'name'               => $buildJson['model']['name'] . ' - ' . $buildJson['customer']['firstName'] . $buildJson['customer']['surname'],
+            'name'               => $buildJson['model']['name'] . ' - ' . $buildJson['customer']['firstName'] . ' ' . $buildJson['customer']['surname'],
             'description'        => json_encode($buildJson),
             'short_description'  => "A custom build for " . $buildJson['customer']['firstName'] . $buildJson['customer']['surname'],
             // 'sku'                => '',
