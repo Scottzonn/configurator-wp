@@ -37,6 +37,14 @@ class SZWoocommerce {
 
     public function addBuildToCart( $buildJson){
 
+        $description = '<h3>Added Accessories</h3>';
+        foreach($buildJson['accessories'] as $accessory){
+            $description .= $accessory['name'] . ' - ' . $accessory['rrp'] . '<br>';
+        }
+        $description .= '<h3>Dealer</h3>';
+        $description .= $buildJson['dealer']['name'];
+        
+
         $id = $this->create_product(array(
 
             'type'               => '', // Simple product by default
