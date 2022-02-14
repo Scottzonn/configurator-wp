@@ -39,7 +39,7 @@ class SZWoocommerce {
 
         $description = '<h3>Added Accessories</h3>';
         foreach($buildJson['accessories'] as $accessory){
-            $description .= $accessory['name'] . ' - ' . $accessory['rrp'] . '<br>';
+            $description .= $accessory['name'] . ' - $' . $accessory['rrp'] . '<br>';
         }
         $description .= '<h3>Dealer</h3>';
         $description .= $buildJson['dealer']['name'];
