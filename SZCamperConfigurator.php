@@ -277,6 +277,7 @@ class SZCamperConfigurator {
 			'settings_endpoint' => site_url() . '/wp-json/camperconfigurator/v1/settings',
 			'accent_color' => $this->admin_settings->getAccentColor(),
 			'require_user_contact_details_upfront' => $this->admin_settings->getRequireUserDetailsFirst(),
+			'enable_cart' =>  $this->admin_settings->getEnableCart(),
 
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.

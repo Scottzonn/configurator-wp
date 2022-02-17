@@ -128,6 +128,13 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'default'   => false,
             ),
             array(
+                'field_id'      => 'enable_cart',
+                'title'         => 'Woocommerce Integration',
+                'type'          => 'checkbox',
+                'label'         => 'Include and "Add to cart" button at the end of the build process. (Woocommerce must be installed)',
+                'default'   => false,
+            ),
+            array(
                 'field_id'      => 'accent_color',
                 'title'         => __( 'Accent Colour', 'admin-page-framework-loader' ),
                 'type'          => 'color',
@@ -419,7 +426,9 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     public function getAccentColor(){
         return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'accent_color', '#f26100');
     }
-
+    public function getEnableCart(){
+        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'enable_cart', '');
+    }
     /**
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
      * @callback        action      do_{page slug}
