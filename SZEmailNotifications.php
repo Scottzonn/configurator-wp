@@ -1,6 +1,16 @@
 <?php 
 include_once( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
 
+/**
+ * Filter the mail content type.
+ */
+function set_html_mail_content_type() {
+    return 'text/html';
+}
+add_filter( 'wp_mail_content_type', 'set_html_mail_content_type' );
+
+
+
 class SZEmailNotifications{
 
 	//send email
@@ -28,12 +38,14 @@ class SZEmailNotifications{
 
 		$HTMLfooter = '</body></html>';
 
-		if(wp_mail($userEmailFields['emailTo'], $userEmailFields['emailSubject'], $HTMLheader . $userEmailFields['emailTemplate'] . $HTMLfooter, $headers)) {
+		$emailBody = $HTMLheader . $userEmailFields['emailTemplate'] . $HTMLfooter;
+
+		if(wp_mail($userEmailFields['emailTo'], $userEmailFields['emailSubject'], $emailBody, $headers)) {
 			$response = [
 				message => 'Email Sent',
 				success => true,
 			];
-			echo print_r($userEmailFields['emailTemplate'], true);
+			echo print_r($emailBody, true);
 			echo json_encode($response);
 
 		} else {
