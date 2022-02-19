@@ -1,15 +1,6 @@
 <?php 
 include_once( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
 
-/**
- * Filter the mail content type.
- */
-function set_html_mail_content_type() {
-    return 'text/html';
-}
-add_filter( 'wp_mail_content_type', 'set_html_mail_content_type' );
-
-
 
 class SZEmailNotifications{
 
@@ -24,7 +15,7 @@ class SZEmailNotifications{
 		$userEmailFields = $this->parseAllTags($buildJson, $userEmailFields);
 		// echo print_r($userEmailFields, true);
 		$headers = array(
-			'Content-Type: text/html; charset=UTF-8',
+			'Content-type: text/html; charset=UTF-8',
 			"From: {$userEmailFields['fromName']} <{$userEmailFields['fromEmail']}>",
 			"Reply-To: {$userEmailFields['replyTo']}"
 		);
