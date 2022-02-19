@@ -65,39 +65,47 @@ class SZEmailNotifications{
 		$accessories = '<ul>' . $accessories . '</ul>';
 
 		
+		$customOptionString = '';
+		foreach($buildJson["customOptions"] as $option){
+			$customOptionString .= '<li>'. 
+				$option["screen"]['option_name'] .
+				 ': ' . $option["selectedOption"]['option_name'] .
+				 '</li>';
+		}
+		$customOptionString = '<ul>' . $customOptionString . '</ul>';
+		
 
 		$replacements = array(
-			'[first name]' 		=>  $buildJson["customer"]["firstName"],
+			'[first_name]' 		=>  $buildJson["customer"]["firstName"],
 			'[surname]' => 			$buildJson["customer"]["surname"],
-			'[full name]' => 		$buildJson["customer"]["firstName"] . ' ' . $buildJson["customer"]["surname"],
+			'[full_name]' => 		$buildJson["customer"]["firstName"] . ' ' . $buildJson["customer"]["surname"],
 			'[email]' => 			$buildJson["customer"]["email"],
 			'[postcode]' => 		$buildJson["customer"]["postcode"],
 			'[phone]' => 			$buildJson["customer"]["phone"],
-			'[address line 1]' => 	$buildJson["customer"]["address"]["address-line-1"],
-			'[address line 2]' => 	$buildJson["customer"]["address"]["address-line-2"],
+			'[address_line_1]' => 	$buildJson["customer"]["address"]["address-line-1"],
+			'[address_line_2]' => 	$buildJson["customer"]["address"]["address-line-2"],
 			'[city]' => 			$buildJson["customer"]["address"]["city"],
 			'[country]' => 			$buildJson["customer"]["address"]["country"],
 			'[state]' => 			$buildJson["customer"]["address"]["state"],
-			'[product name]' => 	$buildJson["product"]["name"],
+			'[product_name]' => 	$buildJson["product"]["name"],
 			'[rrp]' => 				$buildJson["rrp"] . '',
 			'[totalPrice]' => 		$buildJson["totalPrice"] . '',
-			'[image url]' => 		$buildJson["model"]["featured_image"]["url"],
+			'[image_url]' => 		$buildJson["model"]["featured_image"]["url"],
 			'[salesperson]' => 		$buildJson["dealerAdmin"]["salesperson"],
 			'[location]' => 		$buildJson["dealerAdmin"]["location"],
-			'[match wheels]' => 		$buildJson["dealerAdmin"]["matchWheels"],
+			'[match_wheels]' => 		$buildJson["dealerAdmin"]["matchWheels"],
 			'[towVehicleMake]' => 		$buildJson["dealerAdmin"]["towVehicleMake"],
 			'[towVehicleModel]' => 		$buildJson["dealerAdmin"]["towVehicleModel"],
 			'[towVehicleYear]' => 		$buildJson["dealerAdmin"]["towVehicleYear"],
-			'[towVehicleWheelSize]' => 		$buildJson["dealerAdmin"]["towVehicleWheelSize"],
-			'[towVehicleTyreSize]' => 		$buildJson["dealerAdmin"]["towVehicleTyreSize"],
-			'[specialRequests]' => 		$buildJson["dealerAdmin"]["specialRequests"],
-			'[comments]' => 		$buildJson["dealerAdmin"]["comments"],
-			'[buildDateRequested]' => 		$buildJson["dealerAdmin"]["buildDateRequested"],
-			'[discount]' => 		$buildJson["dealerAdmin"]["discount"],
-			'[discountType]' => 		$buildJson["dealerAdmin"]["discountType"],
-
-
-			'[accessories list]' =>	$accessories
+			'[towVehicleWheelSize]' => 	$buildJson["dealerAdmin"]["towVehicleWheelSize"],
+			'[towVehicleTyreSize]' 	=> 	$buildJson["dealerAdmin"]["towVehicleTyreSize"],
+			'[specialRequests]' 	=> 	$buildJson["dealerAdmin"]["specialRequests"],
+			'[comments]' 			=> 	$buildJson["dealerAdmin"]["comments"],
+			'[buildDateRequested]' 	=>	$buildJson["dealerAdmin"]["buildDateRequested"],
+			'[discount]' 			=> 	$buildJson["dealerAdmin"]["discount"],
+			'[discountType]' 		=>	$buildJson["dealerAdmin"]["discountType"],
+			'[accessories_list]'	=>	$accessories,
+			'[custom_options_list]' 		=>	$customOptionString
 		);
 		// echo 'here2 ' . print_r($buildJson, true);
 
