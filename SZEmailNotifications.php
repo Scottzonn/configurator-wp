@@ -24,6 +24,7 @@ class SZEmailNotifications{
 				message => 'Email Sent',
 				success => true,
 			];
+			echo print_r($userEmailFields['emailTemplate'], true);
 			echo json_encode($response);
 
 		} else {
