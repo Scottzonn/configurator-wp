@@ -218,7 +218,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
                 'field_id'      => 'enable_cart',
                 'title'         => 'Woocommerce Integration',
                 'type'          => 'checkbox',
-                'label'         => 'Include and "Add to cart" button at the end of the build process. (Woocommerce must be installed)',
+                'label'         => 'Include an "Add to cart" button at the end of the build process. (Woocommerce must be installed)',
                 'default'   => false,
             ),
             array(
