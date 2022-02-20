@@ -21,7 +21,8 @@ class SZEmailNotifications{
 		);
 
 
-		$HTMLheader = '<html xmlns="http://www.w3.org/1999/xhtml">
+		$HTMLheader = '<!doctype html>
+		<html>
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -73,7 +74,8 @@ class SZEmailNotifications{
 
 		$accessories = '';
 		foreach($buildJson["accessories"] as $accessory){
-			$accessories .= '<li>'. $accessory["name"] . ' - $' . $accessory["rrp"] . ' - Part No. ' . $accessory["part_number"] .'</li>';
+			$qty = $buildJson["accessoryQuantities"][$accessory["id"]];
+			$accessories .= '<li>'. $qty . ' x ' . $accessory["name"] . ' - $' . $accessory["rrp"] . ' - Part No. ' . $accessory["part_number"] .'</li>';
 		}
 		$accessories = '<ul>' . $accessories . '</ul>';
 
@@ -146,10 +148,12 @@ class SZEmailNotifications{
 
 		$res = '';
 		foreach($buildJson["accessories"] as $accessory){
-			$line = str_replace("[acc_name]", $accessory["name"], $string);
-			$line = str_replace("[acc_rrp]", $accessory["rrp"], $line);
-			$line = str_replace("[acc_part_number]", $accessory["part_number"], $line);
-			$res .= $line;
+			$res = str_replace("[acc_name]", $accessory["name"], $string);
+			$res = str_replace("[acc_rrp]", $accessory["rrp"], $res);
+			$res = str_replace("[acc_part_number]", $accessory["part_number"], $res);
+
+			$res = str_replace("[acc_quantity]", $buildJson["accessoryQuantities"][$accessory["id"]], $res);
+		
 		}
 		return $res;
 	}
