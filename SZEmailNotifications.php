@@ -133,10 +133,9 @@ class SZEmailNotifications{
 		$matches_num = preg_match_all('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $newStr, $matches);
 		if($matches_num >= 1) {
 			$innerContent = $this->parseLoopContent($buildJson, $matches[1][0]);
-			$newStr = preg_replace('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $innerContent, $newStr);
-			// $newStr .= "here is the match";
-			// $newStr .= print_r($matches, true);
-			// $newStr .= "here is the content" . $innerContent;
+			//possible fix for bugs
+			//addcslashes will escape characters passed to it. I'm escaping $, but maybe I need to escape others too?
+			$newStr = preg_replace('/\[acc_loop\](.*?)\[\/acc_loop\]/s',  addcslashes($innerContent, '\$'), $newStr);
 		} 
 
 
