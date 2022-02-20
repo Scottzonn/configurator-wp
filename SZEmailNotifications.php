@@ -134,9 +134,9 @@ class SZEmailNotifications{
 		if($matches_num >= 1) {
 			$innerContent = $this->parseLoopContent($buildJson, $matches[1][0]);
 			$newStr = preg_replace('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $innerContent, $newStr);
-			$newStr .= "here is the match";
-			$newStr .= print_r($matches, true);
-			$newStr .= "here is the content" . $innerContent;
+			// $newStr .= "here is the match";
+			// $newStr .= print_r($matches, true);
+			// $newStr .= "here is the content" . $innerContent;
 		} 
 
 
@@ -148,12 +148,11 @@ class SZEmailNotifications{
 
 		$res = '';
 		foreach($buildJson["accessories"] as $accessory){
-			$res = str_replace("[acc_name]", $accessory["name"], $string);
-			$res = str_replace("[acc_rrp]", $accessory["rrp"], $res);
-			$res = str_replace("[acc_part_number]", $accessory["part_number"], $res);
-
-			$res = str_replace("[acc_quantity]", $buildJson["accessoryQuantities"][$accessory["id"]], $res);
-		
+			$acc_str = str_replace("[acc_name]", $accessory["name"], $string);
+			$acc_str = str_replace("[acc_rrp]", $accessory["rrp"], $acc_str);
+			$acc_str = str_replace("[acc_part_number]", $accessory["part_number"], $acc_str);
+			$acc_str = str_replace("[acc_quantity]", $buildJson["accessoryQuantities"][$accessory["id"]], $acc_str);
+			$res .= $acc_str;
 		}
 		return $res;
 	}
