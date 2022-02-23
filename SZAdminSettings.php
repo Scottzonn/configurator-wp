@@ -48,14 +48,9 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             
         );    
     }
-
-    /**
-     * One of the predefined callback method.
-     * 
-     * @remark      content_{page slug}
-     */    
-    public function content_camper_config_settings_tab_self_emails( $sContent ) {      
-        $shortcodes = "[first_name]
+    private function shortcode_instructions(){
+        $customercodes = "<h4>Customer Details</h4>
+        [first_name]
         [surname]
         [full_name]
         [email]
@@ -66,10 +61,19 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         [city]
         [country]
         [state]
+        [deliveryMethod]";
+
+        $product ="<h4>Build Details</h4>
         [product_name]
         [rrp]
         [totalPrice]
         [image_url]
+        [accessories_list]
+        [custom_options_list]
+        [model_name]
+        [shareLinkURL]";
+
+        $dealerAdmin = "<h4>Dealer Admin</h4>
         [salesperson]
         [location]
         [match_wheels]
@@ -82,15 +86,22 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         [comments]
         [buildDateRequested]
         [discount]
-        [discountType]
-        [accessories_list]
-        [custom_options_list]";
-        $loop = "<p>[accessories list] prints a default list, but you can do a custom display by looping through accessories like so:</p>";
+        [discountType]";
+
+        $loop = "<h4>Accessories Loop</h4><p>[accessories list] prints a default list, but you can do a custom display by looping through accessories like so:</p>";
         $loop .= "[acc_loop]<br>";
         $loop .= "[acc_name] - $[acc_rrp] - Part Number:[acc_part_number]<br>";
         $loop .= "[/acc_loop]<br>";
         
-        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $loop;
+        return '<h3>Available Shortcodes</h3>' . $customercodes . $product . $dealerAdmin . $loop;
+    }
+    /**
+     * One of the predefined callback method.
+     * 
+     * @remark      content_{page slug}
+     */    
+    public function content_camper_config_settings_tab_self_emails( $sContent ) {      
+        return $sContent . $this->shortcode_instructions();
     }
     /**
      * One of the predefined callback method.
@@ -98,85 +109,18 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * @remark      content_{page slug}
      */    
     public function content_camper_config_settings_tab_customer_emails( $sContent ) {      
-        $shortcodes = "[first_name]
-        [surname]
-        [full_name]
-        [email]
-        [postcode]
-        [phone]
-        [address_line_1]
-        [address_line_2]
-        [city]
-        [country]
-        [state]
-        [product_name]
-        [rrp]
-        [totalPrice]
-        [image_url]
-        [salesperson]
-        [location]
-        [match_wheels]
-        [towVehicleMake]
-        [towVehicleModel]
-        [towVehicleYear]
-        [towVehicleWheelSize]
-        [towVehicleTyreSize]
-        [specialRequests]
-        [comments]
-        [buildDateRequested]
-        [discount]
-        [discountType]
-        [accessories_list]
-        [custom_options_list]";
-        $loop = "<p>[accessories list] prints a default list, but you can do a custom display by looping through accessories like so:</p>";
-        $loop .= "[acc_loop]<br>";
-        $loop .= "[acc_name] - $[acc_rrp] - Part Number:[acc_part_number]<br>";
-        $loop .= "[/acc_loop]<br>";
-        
-        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $loop;
+        return $sContent . $this->shortcode_instructions();
     }
+
+
+    
     /**
      * One of the predefined callback method.
      * 
      * @remark      content_{page slug}
      */    
     public function content_camper_config_settings_tab_dealer_emails( $sContent ) {      
-        $shortcodes = "[first_name]
-        [surname]
-        [full_name]
-        [email]
-        [postcode]
-        [phone]
-        [address_line_1]
-        [address_line_2]
-        [city]
-        [country]
-        [state]
-        [product_name]
-        [rrp]
-        [totalPrice]
-        [image_url]
-        [salesperson]
-        [location]
-        [match_wheels]
-        [towVehicleMake]
-        [towVehicleModel]
-        [towVehicleYear]
-        [towVehicleWheelSize]
-        [towVehicleTyreSize]
-        [specialRequests]
-        [comments]
-        [buildDateRequested]
-        [discount]
-        [discountType]
-        [accessories_list]
-        [custom_options_list]";
-        $loop = "<p>[accessories list] prints a default list, but you can do a custom display by looping through accessories like so:</p>";
-        $loop .= "[acc_loop]<br>";
-        $loop .= "[acc_name] - $[acc_rrp] - Part Number:[acc_part_number]<br>";
-        $loop .= "[/acc_loop]<br>";
-        
-        return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $loop;
+        return $sContent . $this->shortcode_instructions();
     }
 
     /**

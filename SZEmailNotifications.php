@@ -102,7 +102,9 @@ class SZEmailNotifications{
 			'[city]' => 			$buildJson["customer"]["address"]["city"],
 			'[country]' => 			$buildJson["customer"]["address"]["country"],
 			'[state]' => 			$buildJson["customer"]["address"]["state"],
+			'[deliveryMethod]' => 	$buildJson["customer"]["deliveryMethod"],
 			'[product_name]' => 	$buildJson["product"]["name"],
+			'[model_name]' => 		$buildJson["model"]["name"],
 			'[rrp]' => 				$buildJson["rrp"] . '',
 			'[totalPrice]' => 		$buildJson["totalPrice"] . '',
 			'[image_url]' => 		$buildJson["model"]["featured_image"]["url"],
@@ -119,8 +121,9 @@ class SZEmailNotifications{
 			'[buildDateRequested]' 	=>	$buildJson["dealerAdmin"]["buildDateRequested"],
 			'[discount]' 			=> 	$buildJson["dealerAdmin"]["discount"],
 			'[discountType]' 		=>	$buildJson["dealerAdmin"]["discountType"],
+			'[shareLinkURL]' 		=>	$buildJson["shareLinkURL"],
 			'[accessories_list]'	=>	$accessories,
-			'[custom_options_list]' 		=>	$customOptionString
+			'[custom_options_list]' 		=>	$customOptionString,
 		);
 		// echo 'here2 ' . print_r($buildJson, true);
 
