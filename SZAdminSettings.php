@@ -535,9 +535,9 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
 
         $models = $this->getModelsSoldArray();
         $products_sold = array();
-        foreach ($models as $prod_mod_str => $prod_model_names) {
+        foreach ($models as $prod_mod_str => $is_selling) {
             $prod_id = explode('_', $prod_mod_str)[0];
-            if(!in_array($prod_id, $products_sold)){
+            if(!in_array($prod_id, $products_sold) && $is_selling){
                 $products_sold[] = $prod_id;
             }
         }
@@ -546,9 +546,9 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     public function getModelsSoldIds() {
         $models = $this->getModelsSoldArray();
         $models_sold = array();
-        foreach ($models as $prod_mod_str => $prod_model_names) {
+        foreach ($models as $prod_mod_str => $is_selling) {
             $mod_id = explode('_', $prod_mod_str)[1];
-            if(!in_array($mod_id, $models_sold)){
+            if(!in_array($mod_id, $models_sold) && $is_selling ){
                 $models_sold[] = $mod_id;
             }
         }
