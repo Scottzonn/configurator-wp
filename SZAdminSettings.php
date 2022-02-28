@@ -199,8 +199,8 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         }
         $this->addSettingField(
             array(
-                'field_id'      =>    'product_' . $products->data[$i]->id,
-                'title'         =>    $products->data[$i]->attributes->name,
+                'field_id'      =>    'models_sold',
+                'title'         =>    'Models Sold',
                 'type'          =>    'checkbox',
                 'label'         =>  $labels,
                 'after_label'   =>  '<br>',
