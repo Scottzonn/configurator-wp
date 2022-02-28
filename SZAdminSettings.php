@@ -185,7 +185,42 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         }
         return $sContent . $shortcodes . $response;
     }
+ /**
+     * One of the predefined callback method.
+     * 
+     * @remark      content_{page slug}
+     */    
+    public function load_camper_config_settings_tab_products( $sContent ) {      
+        $curl = curl_init();
 
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://camper-configurator-spw7u.ondigitalocean.app/api/products?fields%5B0%5D=name&fields%5B1%5D=id&pagination%5Blimit%5D=500',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+        
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+
+        $products = json_decode($response);
+        
+        for($i = 0; $i < count($products->data); $i++){
+            $this->addSettingsField(
+                array(
+                    'field_id'      =>    'product_' . $products->data[$i]->id,
+                    'title'         =>    $products->data[$i]->attributes->name,
+                    'type'          =>    'checkbox',
+                    'default'       =>    false,
+                )
+            );
+        }
+    }
     /**
      * One of the pre-defined methods which is triggered when the registered page loads.
      *
