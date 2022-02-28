@@ -209,7 +209,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         curl_close($curl);
 
         $products = json_decode($response);
-        $this->addSettingField(
+        $this->addSettingFields(
             array(
                 'field_id'      => 'test',
                 'title'         => 'test Details',
