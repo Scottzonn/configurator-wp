@@ -278,6 +278,8 @@ class SZCamperConfigurator {
 			'accent_color' => $this->admin_settings->getAccentColor(),
 			'require_user_contact_details_upfront' => $this->admin_settings->getRequireUserDetailsFirst(),
 			'enable_cart' =>  $this->admin_settings->getEnableCart(),
+			'products_sold' => $this->admin_settings->getProductsSoldIds(),
+			'models_sold' => $this->admin_settings->getModelsSoldIds(),
 
 		);
 		// Variables for app use - These variables will be available in window.szReactPlugin variable.
