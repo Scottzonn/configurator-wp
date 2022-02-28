@@ -154,8 +154,8 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */    
     public function content_camper_config_settings_tab_products( $sContent ) {      
         $shortcodes = "<p>Select the Products you want to sell through the configurator</p>";
-     
-        return  $shortcodes . $sContent;
+        $models_sold = $this->get_models_sold();
+        return  $shortcodes . $models_sold .  $sContent;
     }
  /**
      * One of the predefined callback method.
@@ -181,16 +181,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         curl_close($curl);
 
         $products = json_decode($response);
-        // $this->addSettingField(
-        //     array(
-        //         'field_id'      => 'test',
-        //         'title'         => 'test Details',
-        //         'type'          => 'checkbox',
-        //         'label'         => 'test',
-        //         'default'   => false,
-        //     ),
-         
-        // );
+
         $labels = array();
         for($i = 0; $i < count($products->data); $i++){
             for($j = 0; $j < count($products->data[$i]->attributes->models->data); $j++){
@@ -530,6 +521,9 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     }
     public function getEnableCart(){
         return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'enable_cart', '');
+    }
+    public function getModelsSold() {
+        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'models_sold', '');
     }
     /**
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
