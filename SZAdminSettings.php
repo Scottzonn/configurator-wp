@@ -185,7 +185,8 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $labels = array();
         for($i = 0; $i < count($products->data); $i++){
             for($j = 0; $j < count($products->data[$i]->attributes->models->data); $j++){
-                $labels[$products->data[$i]->attributes->models->data[$j]->attributes->name] = $products->data[$i]->attributes->name . ' - ' . $products->data[$i]->attributes->models->data[$j]->attributes->name;
+                $key = $products->data[$i]->id . '_' . $products->data[$i]->attributes->models->data[$j]->id;
+                $labels[$key] = $products->data[$i]->attributes->name . ' - ' . $products->data[$i]->attributes->models->data[$j]->attributes->name;
             }
         }
         $this->addSettingField(
