@@ -523,7 +523,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'enable_cart', '');
     }
     public function getModelsSold() {
-        return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', array());
+        return get_option( 'SZAdminSettings', array());
     }
     /**
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
