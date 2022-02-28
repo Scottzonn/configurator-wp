@@ -24,6 +24,10 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
             array(
                 'tab_slug'  =>    'tab_general',    // avoid hyphen(dash), dots, and white spaces
                 'title'     =>    __( 'General Settings', 'sztext' ),
+            ),
+            array(
+                'tab_slug'  =>    'tab_products',
+                'title'     =>    __( 'Products', 'sztext' ),
             ),        
             // array(
             //     'tab_slug'  =>    'tab_manufacturer_settings',
@@ -141,6 +145,34 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         
         
         return $sContent . '<h3>Available Shortcodes</h3>' . $shortcodes . $info;
+    }
+
+    /**
+     * One of the predefined callback method.
+     * 
+     * @remark      content_{page slug}
+     */    
+    public function content_camper_config_settings_tab_products( $sContent ) {      
+        $shortcodes = "<h1>Select the Products you want to sell through the configurator</h1>";
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://camper-configurator-spw7u.ondigitalocean.app/api/products?fields%5B0%5D=name&fields%5B1%5D=id&pagination%5Blimit%5D=500',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+        
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+        $response;
+        
+        return $sContent . $shortcodes . $response;
     }
 
     /**
