@@ -194,7 +194,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => 'https://camper-configurator-spw7u.ondigitalocean.app/api/products?fields%5B0%5D=name&fields%5B1%5D=id&pagination%5Blimit%5D=500',
+          CURLOPT_URL => 'https://camper-configurator-spw7u.ondigitalocean.app/api/products?fields[0]=name&fields[1]=id&pagination[limit]=500&populate[models][fields][0]=id&populate[models][fields][0]=name',
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => '',
           CURLOPT_MAXREDIRS => 10,
@@ -219,17 +219,21 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         //     ),
          
         // );
+        $labels = array();
         for($i = 0; $i < count($products->data); $i++){
-           
-            $this->addSettingField(
-                array(
-                    'field_id'      =>    'product_' . $products->data[$i]->id,
-                    'title'         =>    $products->data[$i]->attributes->name,
-                    'type'          =>    'checkbox',
-                    'default'       =>    false,
-                )
-            );
+            for($j = 0; $j < count($products->data[$i]->attributes->models->data); $j++){
+                $labels[$products->data[$i]->attributes->models->data[$j]->attributes->name] = $products->data[$i]->attributes->name . ' - ' . $products->data[$i]->attributes->models->data[$j]->attributes->name;
+            }
         }
+        $this->addSettingField(
+            array(
+                'field_id'      =>    'product_' . $products->data[$i]->id,
+                'title'         =>    $products->data[$i]->attributes->name,
+                'type'          =>    'checkbox',
+                'label'         =>  $labels,
+                'after_label'   =>  '<br>',
+            )
+        );
     }
     /**
      * One of the pre-defined methods which is triggered when the registered page loads.
