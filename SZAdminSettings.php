@@ -154,8 +154,10 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */    
     public function content_camper_config_settings_tab_products( $sContent ) {      
         $shortcodes = "<p>Select the Products you want to display</p>";
-        $models_sold = $this->getModelsSold();
-        return  $shortcodes . print_r($models_sold, true) .  $sContent;
+        $models_sold = $this->getModelsSoldArray();
+        $products_sold = $this->getProductsSoldIds();
+        $models = $this->getModelsSoldIds();
+        return  $shortcodes . print_r($models_sold, true) .  $sContent . $products_sold . '<br>' . $models;
     }
  /**
      * One of the predefined callback method.
@@ -523,10 +525,34 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
     public function getEnableCart(){
         return CConfiguratorAdminPageFramework::getOption( 'SZAdminSettings', 'enable_cart', '');
     }
-    public function getModelsSold() {
+    public function getModelsSoldArray() {
         $data = get_option( 'SZAdminSettings', array());
         $value = isset( $data['models_sold'] ) ? $data['models_sold'] : array();
         return $value;
+    }
+
+    public function getProductsSoldIds() {
+
+        $models = $this->getModelsSoldArray();
+        $products_sold = array();
+        foreach ($models as $prod_mod_str => $prod_model_names) {
+            $prod_id = explode('_', $prod_mod_str)[0];
+            if(!in_array($prod_id, $products_sold)){
+                $products_sold[] = $prod_mod_str;
+            }
+        }
+        return $products_sold;
+    }
+    public function getModelsSoldIds() {
+        $models = $this->getModelsSoldArray();
+        $models_sold = array();
+        foreach ($models as $prod_mod_str => $prod_model_names) {
+            $mod_id = explode('_', $prod_mod_str)[1];
+            if(!in_array($mod_id, $models_sold)){
+                $models_sold[] = $prod_mod_str;
+            }
+        }
+        return $models_sold;
     }
     /**
      * One of the pre-defined methods which is triggered when the page contents is going to be rendered.
