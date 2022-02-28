@@ -157,7 +157,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $models_sold = $this->getModelsSoldArray();
         $products_sold = $this->getProductsSoldIds();
         $models = $this->getModelsSoldIds();
-        return  $shortcodes . print_r($models_sold, true) .  $sContent . $products_sold . '<br>' . $models;
+        return  $shortcodes . print_r($models_sold, true) .  $sContent . print_r($products_sold, true) . '<br>' . print_r($models, true);
     }
  /**
      * One of the predefined callback method.
