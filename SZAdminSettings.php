@@ -209,17 +209,27 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         curl_close($curl);
 
         $products = json_decode($response);
-        
-        for($i = 0; $i < count($products->data); $i++){
-            $this->addSettingsField(
-                array(
-                    'field_id'      =>    'product_' . $products->data[$i]->id,
-                    'title'         =>    $products->data[$i]->attributes->name,
-                    'type'          =>    'checkbox',
-                    'default'       =>    false,
-                )
-            );
-        }
+        $this->addSettingFields(
+            array(
+                'field_id'      => 'test',
+                'title'         => 'test Details',
+                'type'          => 'checkbox',
+                'label'         => 'test',
+                'default'   => false,
+            ),
+         
+        );
+        // for($i = 0; $i < count($products->data); $i++){
+           
+        //     $this->addSettingsField(
+        //         array(
+        //             'field_id'      =>    'product_' . $products->data[$i]->id,
+        //             'title'         =>    $products->data[$i]->attributes->name,
+        //             'type'          =>    'checkbox',
+        //             'default'       =>    false,
+        //         )
+        //     );
+        // }
     }
     /**
      * One of the pre-defined methods which is triggered when the registered page loads.
