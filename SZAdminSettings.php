@@ -153,7 +153,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * @remark      content_{page slug}
      */    
     public function content_camper_config_settings_tab_products( $sContent ) {      
-        $shortcodes = "<p>Select the Products you want to display</p>";
+        $shortcodes = "<p>Select the models you want to display</p>";
         $models_sold = $this->getModelsSoldArray();
         $products_sold = $this->getProductsSoldIds();
         $models = $this->getModelsSoldIds();
