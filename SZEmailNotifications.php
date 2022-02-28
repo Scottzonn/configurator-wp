@@ -127,35 +127,50 @@ class SZEmailNotifications{
 		);
 		// echo 'here2 ' . print_r($buildJson, true);
 
-		$newStr = $string;
+		$parsedString = $string;
 		foreach($replacements as $placeholder => $literal){
-			$newStr = str_replace($placeholder, $literal, $newStr);
+			$parsedString = str_replace($placeholder, $literal, $parsedString);
 		}
 
-		//get contents between loop tags
-		$matches_num = preg_match_all('/\[acc_loop\](.*?)\[\/acc_loop\]/s', $newStr, $matches);
+
+		//add quantity field to each accessory in buildjson, so it can be used in  loop
+		for($i=0; $i<count($buildJson["accessories"]); $i++){
+			$buildJson["accessories"][$i]['quantity'] = $buildJson["accessoryQuantities"][$buildJson["accessories"][$i]['id']];
+		}
+
+		$parsedString = parseLoop( 'acc', $parsedString, $buildJson['accessories'] );
+		$parsedString = parseLoop( 'opt', $parsedString, $buildJson['customOptions'] );
+
+		return $parsedString;
+
+	}
+
+	//prefix: the prefix for the shortcode eg. 'acc' for [acc_loop][acc_name][/acc_loop]
+	//haystack: the original string to parse
+	//replacements: an array of key value pairs to replace in the haystack. 1D only.
+	private function parseLoop(string $prefix, string $haystack, array $replacements){
+
+		$original_inner_content = '';
+	 	$new_content = '';
+		$matches_num = preg_match_all("/\[${prefix}_loop\](.*?)\[\/${prefix}_loop\]/s", $haystack, $matches);
 		if($matches_num >= 1) {
-			$innerContent = $this->parseLoopContent($buildJson, $matches[1][0]);
+			$original_inner_content = $matches[1][0];
+			// for each item in the replacements, duplicate the matched text, and replace all the matched items, then append to return value. 
+			foreach($replacements as $attr_array){
+				$item_content = $original_inner_content;
+				foreach($attr_array as $key => $value) {
+					$item_content = str_replace("[${prefix}_${key}]", $value, $item_content);
+				}
+				$new_content .= $item_content;
+			}
 			//possible fix for bugs
 			//addcslashes will escape characters passed to it. I'm escaping $, but maybe I need to escape others too?
-			$newStr = preg_replace('/\[acc_loop\](.*?)\[\/acc_loop\]/s',  addcslashes($innerContent, '\$'), $newStr);
+			$parsedString = preg_replace('/\[acc_loop\](.*?)\[\/acc_loop\]/s',  addcslashes($new_content, '\$'), $haystack);
 		} 
 
-
-		return $newStr;
+		return $parsedString;
 
 	}
 
-	private function parseLoopContent(array $buildJson, $string){
 
-		$res = '';
-		foreach($buildJson["accessories"] as $accessory){
-			$acc_str = str_replace("[acc_name]", $accessory["name"], $string);
-			$acc_str = str_replace("[acc_rrp]", $accessory["rrp"], $acc_str);
-			$acc_str = str_replace("[acc_part_number]", $accessory["part_number"], $acc_str);
-			$acc_str = str_replace("[acc_quantity]", $buildJson["accessoryQuantities"][$accessory["id"]], $acc_str);
-			$res .= $acc_str;
-		}
-		return $res;
-	}
 }
