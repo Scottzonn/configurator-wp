@@ -174,7 +174,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $products = json_decode($response);
         
         for($i = 0; $i < count($products->data); $i++){
-            $this->addSettingsField(
+            print_r(
                 array(
                     'field_id'      =>    'product_' . $products->data[$i]->id,
                     'title'         =>    $products->data[$i]->attributes->name,
