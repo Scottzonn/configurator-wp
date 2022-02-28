@@ -153,7 +153,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      * @remark      content_{page slug}
      */    
     public function content_camper_config_settings_tab_products( $sContent ) {      
-        $shortcodes = "<h1>Select the Products you want to sell through the configurator</h1>";
+        $shortcodes = "<p>Select the Products you want to sell through the configurator</p>";
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -170,8 +170,19 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $response = curl_exec($curl);
         
         curl_close($curl);
-        $response;
+
+        $products = json_decode($response);
         
+        for($i = 0; $i < count($products->data); $i++){
+            $this->addSettingsField(
+                array(
+                    'field_id'      =>    'product_' . $products->data[$i]->id,
+                    'title'         =>    $products->data[$i]->attributes->name,
+                    'type'          =>    'checkbox',
+                    'default'       =>    false,
+                )
+            );
+        }
         return $sContent . $shortcodes . $response;
     }
 
