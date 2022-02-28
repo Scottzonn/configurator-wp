@@ -537,9 +537,8 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         $products_sold = array();
         foreach ($models as $prod_mod_str => $prod_model_names) {
             $prod_id = explode('_', $prod_mod_str)[0];
-            $products_sold[] = $prod_id;
             if(!in_array($prod_id, $products_sold)){
-                $products_sold[] = $prod_mod_str;
+                $products_sold[] = $prod_id;
             }
         }
         return $products_sold;
@@ -550,7 +549,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
         foreach ($models as $prod_mod_str => $prod_model_names) {
             $mod_id = explode('_', $prod_mod_str)[1];
             if(!in_array($mod_id, $models_sold)){
-                $models_sold[] = $prod_mod_str;
+                $models_sold[] = $mod_id;
             }
         }
         return $models_sold;
