@@ -12,7 +12,7 @@ class SZAdminSettings extends CConfiguratorAdminPageFramework {
      */
     public function setUp() {
 
-        $this->SZBuildSubmissionPost = new SZBuildSubmissionPost('sz_build_submission');
+        // $this->SZBuildSubmissionPost = new SZBuildSubmissionPost('sz_build_submission');
 
         // Create the root menu - specifies to which parent menu to add.
         $this->setRootMenuPage( 'Settings' );
@@ -579,3 +579,5 @@ function additionalStyles( $sCSSRules ) {
 
 }
 add_filter( 'style_common_admin_page_framework', 'additionalStyles' );
+
+new SZBuildSubmissionPost('sz_build_submission');
