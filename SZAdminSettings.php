@@ -580,4 +580,3 @@ function additionalStyles( $sCSSRules ) {
 }
 add_filter( 'style_common_admin_page_framework', 'additionalStyles' );
 
-new SZBuildSubmissionPost('sz_build_submission');

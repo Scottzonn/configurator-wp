@@ -2,6 +2,7 @@
 
 
 include_once( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
+include_once( dirname( __FILE__ ) . 'SZCustomer.php' );
 class SZBuildSubmissionPost extends CConfiguratorAdminPageFramework_PostType {
     /**
      * Automatically called with the 'wp_loaded' hook.
@@ -53,7 +54,7 @@ class SZBuildSubmissionPost extends CConfiguratorAdminPageFramework_PostType {
 }
 
 
-class SZMetabox extends CConfiguratorAdminPageFramework_MetaBox {
+class SZBuildMetabox extends CConfiguratorAdminPageFramework_MetaBox {
     /*
      * Use the setUp() method to define settings of this meta box.
      */
@@ -65,15 +66,72 @@ class SZMetabox extends CConfiguratorAdminPageFramework_MetaBox {
             array(
                 'field_id'  => 'rrp',
                 'type'      => 'text',
-                'title'     => 'RRP',
+                'title'     => 'Build RRP',
             )
         );
     }
 }
 
-new SZMetabox(
+new SZBuildMetabox(
     null,   // meta box ID - can be null.
-    'SZ Metabox', // title
+    'Build Details', // title
+    array( 'sz_build_submission' ),                 // post type slugs: post, page, etc.
+    'normal',                                      // context
+    'low'                                          // priority
+); 
+
+
+class SZCustomerMetabox extends CConfiguratorAdminPageFramework_MetaBox {
+    /*
+     * Use the setUp() method to define settings of this meta box.
+     */
+    public function setUp() {
+        /**
+         * Adds setting fields in the meta box.
+         */
+        $this->addSettingFields(
+            array(
+                'field_id'  => 'firstName',
+                'type'      => 'text',
+                'title'     => 'First Name',
+            ),
+            array(
+                'field_id'  => 'surname',
+                'type'      => 'text',
+                'title'     => 'Surname',
+            ),
+            array(
+                'field_id'  => 'phone',
+                'type'      => 'text',
+                'title'     => 'Phone',
+            ),
+            array(
+                'field_id'  => 'email',
+                'type'      => 'text',
+                'title'     => 'Email',
+            ),
+            array(
+                'field_id'  => 'newsletter',
+                'type'      => 'checkbox',
+                'title'     => 'Newsletter',
+            ),
+            array(
+                'field_id'  => 'deliveryMethod',
+                'type'      => 'text',
+                'title'     => 'Surname',
+            ),
+            array(
+                'field_id'  => 'postcode',
+                'type'      => 'text',
+                'title'     => 'Surname',
+            )
+        );
+    }
+}
+
+new SZCustomerMetabox (
+    null,   // meta box ID - can be null.
+    'Customer Details', // title
     array( 'sz_build_submission' ),                 // post type slugs: post, page, etc.
     'normal',                                      // context
     'low'                                          // priority
