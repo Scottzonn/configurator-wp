@@ -71,7 +71,7 @@ class SZMetabox extends CConfiguratorAdminPageFramework_MetaBox {
     }
 }
 
-new APF_Tutorial_CustomPostTypeMetaBox(
+new SZMetabox(
     null,   // meta box ID - can be null.
     'My Metabox', // title
     array( 'sz_build_submission' ),                 // post type slugs: post, page, etc.
