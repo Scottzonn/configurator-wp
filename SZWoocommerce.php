@@ -17,7 +17,26 @@
 //     return 'szlink'.$button_link.'szlink';
 // }
 
+add_filter( 'woocommerce_checkout_get_value' , 'custom_checkout_get_value', 20, 2 );
+function custom_checkout_get_value( $value, $input ) {
+    // // Billing first name
+    // if(isset($_GET['FirstName']) && ! empty($_GET['FirstName']) && $input == 'billing_first_name' )
+    //     $value = esc_attr( $_GET['FirstName'] );
 
+    // // Billing last name
+    // if(isset($_GET['LastName']) && ! empty($_GET['LastName']) && $input == 'billing_last_name' )
+    //     $value = esc_attr( $_GET['LastName'] );
+
+    // // Billing email
+    // if(isset($_GET['EmailAddress']) && ! empty($_GET['EmailAddress']) && $input == 'billing_email' )
+    //     $value = sanitize_email( $_GET['EmailAddress'] );
+
+    echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
+
+    return $value;
+}
 
 class SZWoocommerce {
 
@@ -78,6 +97,7 @@ class SZWoocommerce {
     
 
     // Custom function for product creation (For Woocommerce 3+ only)
+    // https://gist.github.com/alphasider/b9916b51083c48466f330ab0006328e6
     public function create_product( $args ){
 
         // Get an empty instance of the product object (defining it's type)
