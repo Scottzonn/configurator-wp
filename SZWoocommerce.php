@@ -48,12 +48,12 @@ class SZWoocommerce {
         $id = $this->create_product(array(
 
             'type'               => '', // Simple product by default
-            'name'               => $buildJson['model']['name'] . ' - ' . $buildJson['customer']['firstName'] . ' ' . $buildJson['customer']['surname'],
+            'name'               => 'Custom ' . $buildJson['model']['name'] . ' - ' . $buildJson['customer']['firstName'] . ' ' . $buildJson['customer']['surname'],
             'description'        => $description,
             'short_description'  => "A custom build for " . $buildJson['customer']['firstName'] . $buildJson['customer']['surname'],
             // 'sku'                => '',
             'regular_price'      => $buildJson['totalPrice'] . "",
-            'visibility'         => 'hidden', //or search/catalog/visible
+            'visibility'         => 'visible', //or search/catalog/visible/hidden
             // 'sale_price'         => '',
             'reviews_allowed'    => false,
             'attributes'         => array(
