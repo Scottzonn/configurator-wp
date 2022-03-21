@@ -51,3 +51,30 @@ class SZBuildSubmissionPost extends CConfiguratorAdminPageFramework_PostType {
  
     }    
 }
+
+
+class SZMetabox extends CConfiguratorAdminPageFramework_MetaBox {
+    /*
+     * Use the setUp() method to define settings of this meta box.
+     */
+    public function setUp() {
+        /**
+         * Adds setting fields in the meta box.
+         */
+        $this->addSettingFields(
+            array(
+                'field_id'  => 'rrp',
+                'type'      => 'text',
+                'title'     => 'RRP',
+            )
+        );
+    }
+}
+
+new APF_Tutorial_CustomPostTypeMetaBox(
+    null,   // meta box ID - can be null.
+    'My Metabox', // title
+    array( 'sz_build_submission' ),                 // post type slugs: post, page, etc.
+    'normal',                                      // context
+    'low'                                          // priority
+);
