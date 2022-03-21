@@ -73,8 +73,8 @@ class SZMetabox extends CConfiguratorAdminPageFramework_MetaBox {
 
 new SZMetabox(
     null,   // meta box ID - can be null.
-    'My Metabox', // title
+    'SZ Metabox', // title
     array( 'sz_build_submission' ),                 // post type slugs: post, page, etc.
     'normal',                                      // context
     'low'                                          // priority
-);
+); 
