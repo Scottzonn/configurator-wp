@@ -15,7 +15,7 @@ class SZBuildSubmissionPost extends CConfiguratorAdminPageFramework_PostType {
                     'add_new_item'       => 'New Customer Build',
                 ),
                 'supports'          => array( 'title' ), // e.g. array( 'title', 'editor', 'comments', 'thumbnail', 'excerpt' ),
-                'public'            => false,
+                'public'            => true,
                 'menu_icon'         => version_compare( $GLOBALS['wp_version'], '3.8', '>=' )
                     ? 'dashicons-admin-generic'
                     : plugins_url( 'asset/image/wp-logo_16x16.png', APFDEMO_FILE ),
