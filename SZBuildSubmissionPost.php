@@ -42,4 +42,12 @@ class SZBuildSubmissionPost extends CConfiguratorAdminPageFramework_PostType {
         //     )
         // );
     }
+
+    public function content( $sContent ) { 
+                    
+        $rrp = get_post_meta( $GLOBALS['post']->ID, 'rrp', true );
+        $rrp = $rrp ? $rrp : '0';
+        return "<h3>" . "RRP" . "</h3>";
+ 
+    }    
 }
