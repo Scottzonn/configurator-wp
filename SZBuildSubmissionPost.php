@@ -48,7 +48,7 @@ class SZBuildSubmissionPost extends CConfiguratorAdminPageFramework_PostType {
                     
         $rrp = get_post_meta( $GLOBALS['post']->ID, 'rrp', true );
         $rrp = $rrp ? $rrp : '0';
-        return "<h3>" . "RRP" . "</h3>";
+        return "<h3>" . "this is my content RRP" . "</h3>";
  
     }    
 }
@@ -70,6 +70,11 @@ class SZBuildMetabox extends CConfiguratorAdminPageFramework_MetaBox {
             )
         );
     }
+
+    public function content( string $sContent ){
+
+        return 'here is some info<br>' . $sContent;
+    }
 }
 
 new SZBuildMetabox(
@@ -89,43 +94,43 @@ class SZCustomerMetabox extends CConfiguratorAdminPageFramework_MetaBox {
         /**
          * Adds setting fields in the meta box.
          */
-        $this->addSettingFields(
-            array(
-                'field_id'  => 'firstName',
-                'type'      => 'text',
-                'title'     => 'First Name',
-            ),
-            array(
-                'field_id'  => 'surname',
-                'type'      => 'text',
-                'title'     => 'Surname',
-            ),
-            array(
-                'field_id'  => 'phone',
-                'type'      => 'text',
-                'title'     => 'Phone',
-            ),
-            array(
-                'field_id'  => 'email',
-                'type'      => 'text',
-                'title'     => 'Email',
-            ),
-            array(
-                'field_id'  => 'newsletter',
-                'type'      => 'checkbox',
-                'title'     => 'Newsletter',
-            ),
-            array(
-                'field_id'  => 'deliveryMethod',
-                'type'      => 'text',
-                'title'     => 'Surname',
-            ),
-            array(
-                'field_id'  => 'postcode',
-                'type'      => 'text',
-                'title'     => 'Surname',
-            )
-        );
+        // $this->addSettingFields(
+        //     array(
+        //         'field_id'  => 'firstName',
+        //         'type'      => 'text',
+        //         'title'     => 'First Name',
+        //     ),
+        //     array(
+        //         'field_id'  => 'surname',
+        //         'type'      => 'text',
+        //         'title'     => 'Surname',
+        //     ),
+        //     array(
+        //         'field_id'  => 'phone',
+        //         'type'      => 'text',
+        //         'title'     => 'Phone',
+        //     ),
+        //     array(
+        //         'field_id'  => 'email',
+        //         'type'      => 'text',
+        //         'title'     => 'Email',
+        //     ),
+        //     array(
+        //         'field_id'  => 'newsletter',
+        //         'type'      => 'checkbox',
+        //         'title'     => 'Newsletter',
+        //     ),
+        //     array(
+        //         'field_id'  => 'deliveryMethod',
+        //         'type'      => 'text',
+        //         'title'     => 'Surname',
+        //     ),
+        //     array(
+        //         'field_id'  => 'postcode',
+        //         'type'      => 'text',
+        //         'title'     => 'Surname',
+        //     )
+        // );
     }
 }
 
