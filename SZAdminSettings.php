@@ -2,12 +2,17 @@
 
 
 include_once( dirname( __FILE__ ) . '/library/apf/admin-page-framework.php' );
+include_once( plugin_dir_path( __FILE__ ) . 'SZBuildSubmissionPost.php');
 class SZAdminSettings extends CConfiguratorAdminPageFramework {
+
+    private SZBuildSubmissionPost $SZBuildSubmissionPost;
     /**
      * The set-up method which is triggered automatically with the 'wp_loaded' hook.
      * Here we define the setup() method to set how many pages, page titles and icons etc.
      */
     public function setUp() {
+
+        $this->SZBuildSubmissionPost = new SZBuildSubmissionPost('sz_build_submission');
 
         // Create the root menu - specifies to which parent menu to add.
         $this->setRootMenuPage( 'Settings' );
