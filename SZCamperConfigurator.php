@@ -17,6 +17,7 @@ define( 'SAVEQUERIES', true );
 include_once( plugin_dir_path( __FILE__ ) . 'SZAdminSettings.php');
 include_once( plugin_dir_path( __FILE__ ) . 'SZEmailNotifications.php');
 include_once( plugin_dir_path( __FILE__ ) . 'SZWoocommerce.php');
+include_once( plugin_dir_path( __FILE__ ) . 'SZBuildSubmissionPost.php');
 
 // Setting react app path constants.
 define('RP_PLUGIN_VERSION','0.1.0' );
@@ -33,6 +34,7 @@ define('SZ_NONCE', 'sznonce');
 function rp_load_plugin(){
 	// Loading the app
 	new SZCamperConfigurator();
+	new SZBuildSubmissionPost('sz_build_submission');
 }
 
 add_action('init','rp_load_plugin');
