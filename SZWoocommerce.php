@@ -31,8 +31,8 @@ function custom_checkout_get_value( $value, $input ) {
     // if(isset($_GET['EmailAddress']) && ! empty($_GET['EmailAddress']) && $input == 'billing_email' )
     //     $value = sanitize_email( $_GET['EmailAddress'] );
 
+    echo '<h1>Hello  world!</h1>';
     echo '<pre>';
-    echo '<h1>Hello, world!</h1>';
     print_r($_POST);
     echo '</pre>';
 
