@@ -5,17 +5,17 @@
 // use Automattic\WooCommerce\Client;
 
 
-add_filter('woocommerce_cart_item_remove_link', 'customized_cart_item_remove_link', 20, 2 );
-function customized_cart_item_remove_link( $button_link, $cart_item_key ){
-    // $targeted_products_ids = array( 98,99,100 );
+// add_filter('woocommerce_cart_item_remove_link', 'customized_cart_item_remove_link', 20, 2 );
+// function customized_cart_item_remove_link( $button_link, $cart_item_key ){
+//     // $targeted_products_ids = array( 98,99,100 );
 
-    $cart_item = WC()->cart->get_cart()[$cart_item_key];
+//     $cart_item = WC()->cart->get_cart()[$cart_item_key];
 
-    // if( in_array($cart_item['data']->get_id(), $targeted_products_ids) )
-    //     $button_link = '';
+//     // if( in_array($cart_item['data']->get_id(), $targeted_products_ids) )
+//     //     $button_link = '';
 
-    return 'szlink'.$button_link.'szlink';
-}
+//     return 'szlink'.$button_link.'szlink';
+// }
 
 
 
